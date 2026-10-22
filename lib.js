@@ -44,6 +44,6 @@ export function headerVisible({ y, lastY, threshold, current }) {
   return delta < 0;
 }
 
-export function themeColor(theme) {
-  return theme === 'dark' ? '#1B1E23' : '#F5F4F0';
+export function topColor(regions, fallback) {
+  return regions.find((r) => r.top <= 0 && r.bottom > 0)?.color ?? fallback;
 }

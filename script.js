@@ -1,17 +1,24 @@
-import { nextId, shouldRun, isHover, headerVisible, themeColor } from './lib.js';
+import { nextId, shouldRun, isHover, headerVisible, topColor } from './lib.js';
 
 const root = document.documentElement;
 
-const paintBrowserBar = () => {
-  for (const meta of document.querySelectorAll('meta[name="theme-color"]')) meta.content = themeColor(root.dataset.theme);
+const bands = [...document.querySelectorAll('.band')];
+const paintTop = () => {
+  const regions = bands.map((band) => {
+    const { top, bottom } = band.getBoundingClientRect();
+    return { top, bottom, color: getComputedStyle(band).backgroundColor };
+  });
+  const color = topColor(regions, getComputedStyle(document.body).backgroundColor);
+  root.style.setProperty('--top', color);
+  for (const meta of document.querySelectorAll('meta[name="theme-color"]')) meta.content = color;
 };
-paintBrowserBar();
+paintTop();
 
 for (const toggle of document.querySelectorAll('.theme-toggle')) {
   toggle.addEventListener('click', () => {
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;
-    paintBrowserBar();
+    paintTop();
     try { localStorage.setItem('theme', next); } catch {}
   });
 }
@@ -25,6 +32,7 @@ window.addEventListener('scroll', () => {
   ticking = true;
   requestAnimationFrame(() => {
     ticking = false;
+    paintTop();
     const y = window.scrollY;
     const next = headerVisible({ y, lastY, threshold: 400, current: shown });
     lastY = y;
