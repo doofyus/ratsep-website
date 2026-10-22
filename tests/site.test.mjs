@@ -122,6 +122,18 @@ test('swift illustration', () => {
   });
 });
 
+test('swift server illustration', () => {
+  checkIllustration(figure('sw', 1), {
+    label: 'A Swift server in the middle: a car crossing a zone sends it an event that goes on to a customer; a phone app and its database talk to it; a graph of vehicle data is queried from it',
+    open: '.', close: '',
+    items: [
+      ['geofencing', 'geofencing', 'Zones for car fleets: cross a line, an event goes out.'],
+      ['graphQL', 'graphQL', 'A GraphQL service over the vehicle data.'],
+      ['startups', 'startups', 'Backends for my own startups and apps.']
+    ]
+  });
+});
+
 test('fonts are local', () => {
   const style = css();
   const faces = style.match(/@font-face\s*{[^}]*}/g) ?? [];

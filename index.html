@@ -201,7 +201,56 @@
 <div class="sub" id="swift-server">
 <h3>And on the server</h3>
 <p>A Swift backend I wrote over a Christmas break for my own startup, then a few smaller Swift services at work.</p>
-<figure class="showcase" data-era="sw"></figure>
+<figure class="showcase showcase-sv" data-era="sw" data-sel="geofencing" data-cycle="geofencing graphQL startups" data-interval="4200">
+<svg role="img" aria-label="A Swift server in the middle: a car crossing a zone sends it an event that goes on to a customer; a phone app and its database talk to it; a graph of vehicle data is queried from it" viewBox="0 0 300 300" width="300" height="300" fill="none" style="--pulse: 3s">
+<g class="grp grp-sel on" data-part="geofencing" style="--off: .4" stroke-linecap="round">
+<path d="M66 98C66 116 118 112 118 128M150 164V236" stroke="var(--line)" stroke-width="1.25"></path>
+<path class="pulse-tail" pathLength="100" d="M66 98C66 116 118 112 118 128" stroke="var(--accent)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84"></path>
+<path class="pulse-head" pathLength="100" d="M66 98C66 116 118 112 118 128" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 95"></path>
+<path class="pulse-tail" pathLength="100" d="M150 164V236" stroke="var(--accent)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84" style="animation-delay: -1.5s"></path>
+<path class="pulse-head" pathLength="100" d="M150 164V236" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 95" style="animation-delay: -1.5s"></path>
+<circle class="st fl on" data-part="geofencing" cx="66" cy="58" r="38" stroke-width="1.25" stroke-dasharray="3 4"></circle>
+<rect class="st moving on" data-part="geofencing" x="-6" y="-4" width="12" height="8" rx="2.5" fill="var(--cbg)" stroke-width="1.3">
+<animateMotion dur="6s" repeatCount="indefinite" path="M6 96 C40 70 80 60 128 22" rotate="auto"></animateMotion>
+</rect>
+<circle class="st on" data-part="geofencing" cx="150" cy="254" r="13" stroke-width="1.5" fill="var(--cbg)"></circle>
+<circle class="fa on" data-part="geofencing" cx="150" cy="254" r="4"></circle>
+</g>
+<g class="grp grp-sel" data-part="startups" style="--off: .4" stroke-linecap="round">
+<path d="M236 72C236 100 182 108 182 128M182 164C182 188 232 192 232 214" stroke="var(--line)" stroke-width="1.25"></path>
+<path class="pulse-tail" pathLength="100" d="M236 72C236 100 182 108 182 128" stroke="var(--accent)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84" style="animation-duration: 2.6s"></path>
+<path class="pulse-head" pathLength="100" d="M236 72C236 100 182 108 182 128" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 95" style="animation-duration: 2.6s"></path>
+<path class="pulse-tail" pathLength="100" d="M182 128C182 108 236 100 236 72" stroke="var(--back)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84" style="animation-duration: 2.6s; animation-delay: -1.3s"></path>
+<path class="pulse-head" pathLength="100" d="M182 128C182 108 236 100 236 72" stroke="var(--back)" stroke-width="2" stroke-dasharray="5 95" style="animation-duration: 2.6s; animation-delay: -1.3s"></path>
+<rect class="st fl" data-part="startups" x="225" y="30" width="22" height="42" rx="5" stroke-width="1.5"></rect>
+<circle class="st" data-part="startups" cx="236" cy="66" r="1.8" stroke-width="1"></circle>
+<path class="st fl" data-part="startups" d="M216 220a16 5 0 0 0 32 0a16 5 0 0 0-32 0v26a16 5 0 0 0 32 0v-26M216 233a16 5 0 0 0 32 0" stroke-width="1.4"></path>
+</g>
+<g class="grp grp-sel" data-part="graphQL" style="--off: .4" stroke-linecap="round">
+<path d="M118 164C118 188 72 192 72 214" stroke="var(--line)" stroke-width="1.25"></path>
+<path class="pulse-tail" pathLength="100" d="M118 164C118 188 72 192 72 214" stroke="var(--accent)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84" style="animation-duration: 2.8s; animation-delay: -.7s"></path>
+<path class="pulse-head" pathLength="100" d="M118 164C118 188 72 192 72 214" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 95" style="animation-duration: 2.8s; animation-delay: -.7s"></path>
+<path class="st" data-part="graphQL" d="M72 222L56 248M72 222L88 248M56 248H88" stroke-width="1.2"></path>
+<circle class="st fl" data-part="graphQL" cx="72" cy="222" r="6" stroke-width="1.4"></circle>
+<circle class="st fl" data-part="graphQL" cx="56" cy="248" r="6" stroke-width="1.4"></circle>
+<circle class="st fl" data-part="graphQL" cx="88" cy="248" r="6" stroke-width="1.4"></circle>
+</g>
+<rect x="88" y="128" width="124" height="36" rx="10" stroke="var(--accent)" stroke-width="6" stroke-opacity=".14"></rect>
+<rect x="88" y="128" width="124" height="36" rx="10" stroke="var(--accent)" stroke-width="1.5" fill="var(--hifill)"></rect>
+<g stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round">
+<path d="M104 140H170M104 152H170"></path>
+<circle cx="186" cy="140" r="2" fill="var(--accent)"></circle>
+<circle cx="194" cy="140" r="2"></circle>
+<circle cx="186" cy="152" r="2"></circle>
+<circle cx="194" cy="152" r="2" fill="var(--accent)"></circle>
+</g>
+</svg>
+<ul>
+<li><button type="button" data-id="geofencing" aria-pressed="true"><span class="item-name"><span class="mark" aria-hidden="true">.</span>geofencing</span><span class="item-note">Zones for car fleets: cross a line, an event goes out.</span></button></li>
+<li><button type="button" data-id="graphQL" aria-pressed="false"><span class="item-name"><span class="mark" aria-hidden="true">.</span>graphQL</span><span class="item-note">A GraphQL service over the vehicle data.</span></button></li>
+<li><button type="button" data-id="startups" aria-pressed="false"><span class="item-name"><span class="mark" aria-hidden="true">.</span>startups</span><span class="item-note">Backends for my own startups and apps.</span></button></li>
+</ul>
+</figure>
 </div>
 </div>
 </div>

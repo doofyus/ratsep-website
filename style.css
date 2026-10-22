@@ -174,4 +174,4 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 .showcase .glow.on { opacity: 1; }
 .showcase .grp { transition: opacity .45s ease; }
 .showcase .grp.dim { opacity: .35; }
-.showcase .grp-sel:not(.on) { opacity: .45; }
+.showcase .grp-sel:not(.on) { opacity: var(--off, .45); }
