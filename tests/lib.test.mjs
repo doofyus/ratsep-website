@@ -45,3 +45,10 @@ test('shouldRun only when nothing holds it', async () => {
   assert.equal(shouldRun(idle), true);
   for (const flag of Object.keys(idle)) assert.equal(shouldRun({ ...idle, [flag]: true }), false, flag);
 });
+
+test('only a mouse counts as hovering', async () => {
+  const { isHover } = await import('../lib.js');
+  assert.equal(isHover({ pointerType: 'mouse' }), true);
+  assert.equal(isHover({ pointerType: 'touch' }), false);
+  assert.equal(isHover({ pointerType: 'pen' }), false);
+});

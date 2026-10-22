@@ -1,4 +1,4 @@
-import { nextId, shouldRun } from './lib.js';
+import { nextId, shouldRun, isHover } from './lib.js';
 
 const root = document.documentElement;
 
@@ -52,12 +52,12 @@ function initShowcase(figure) {
   for (const b of buttons) {
     b.addEventListener('click', () => { select(b.dataset.id); schedule(); });
     if ('hoverSelect' in figure.dataset) {
-      b.addEventListener('pointerenter', () => select(b.dataset.id));
+      b.addEventListener('pointerenter', (e) => { if (isHover(e)) select(b.dataset.id); });
       b.addEventListener('focus', () => select(b.dataset.id));
     }
   }
-  figure.addEventListener('pointerenter', () => { state.hovered = true; schedule(); });
-  figure.addEventListener('pointerleave', () => { state.hovered = false; schedule(); });
+  figure.addEventListener('pointerenter', (e) => { if (isHover(e)) { state.hovered = true; schedule(); } });
+  figure.addEventListener('pointerleave', (e) => { if (isHover(e)) { state.hovered = false; schedule(); } });
   figure.addEventListener('focusin', (e) => { state.focused = e.target.matches(':focus-visible'); schedule(); });
   figure.addEventListener('focusout', (e) => { if (!figure.contains(e.relatedTarget)) { state.focused = false; schedule(); } });
   document.addEventListener('visibilitychange', schedule);

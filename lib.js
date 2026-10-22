@@ -32,3 +32,7 @@ export function nextId(cycle, current) {
 export function shouldRun({ reduced, hovered, focused, hidden }) {
   return !(reduced || hovered || focused || hidden);
 }
+
+export function isHover(event) {
+  return event.pointerType === 'mouse';
+}
