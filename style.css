@@ -185,3 +185,20 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 .showcase-ex[data-sel="translate"] .eg-cache { opacity: .6; }
 .showcase-ex[data-sel="cache"] :is(.eg-in, .eg-out) { opacity: .3; }
 .showcase-ex[data-sel="cache"] .eg-mid { opacity: .5; }
+
+.closing { padding-top: 112px; padding-bottom: 64px; }
+.closing > section { padding-bottom: 112px; }
+.closing > section > h2 { margin: 0; font-size: 36px; line-height: 1.1; font-weight: 700; letter-spacing: -0.02em; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 36px 40px; }
+.card { display: flex; flex-direction: column; gap: 4px; }
+.card .tag { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.card .tag-sw { color: var(--sw-accent); }
+.card h3 { margin: 0; font-size: 18px; line-height: 1.35; font-weight: 600; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
+.lead { margin: 0 0 36px; font-size: 22px; line-height: 1.45; color: var(--ink); }
+.facts { margin: 0; border-top: 1px solid var(--rule); }
+.facts > div { display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.facts dt { flex: 0 0 140px; font-family: var(--mono); font-size: 13px; line-height: 1.9; color: var(--muted); }
+.facts dd { flex: 1 1 260px; margin: 0; font-size: 16px; line-height: 1.6; color: var(--body); }
+.facts dd span { display: block; }
+.site-footer { border-top: 1px solid var(--rule); padding-top: 24px; display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 15px; }

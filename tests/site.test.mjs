@@ -148,6 +148,38 @@ test('elixir illustration', () => {
   });
 });
 
+test('side projects', () => {
+  const side = html().match(/<section id="side"[\s\S]*?<\/section>/)[0];
+  const titles = [...side.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>/g)].map((m) => text(m[1]));
+  assert.deepEqual(titles, ['Kegler', 'A startup', 'Every bank, one view', 'Nature sounds', 'The house']);
+  const flat = text(side);
+  for (const line of ['A bowling score log for iPhone.',
+    'A privacy tool, then invoices by email. I led a couple of developers and wrote the backend and the iOS app.',
+    'All your bank accounts in one iOS app, with its own Swift backend.',
+    'An iOS app for nature sound observations, made for the University of Tartu’s natural history museum.',
+    'Dashboards, automations, smart switches and the rest of the smart home.']) assert.ok(flat.includes(line), line);
+  assert.ok(side.includes('<a href="https://kegler.ratsep.org">Kegler</a>'));
+});
+
+test('about', () => {
+  const about = html().match(/<section id="about"[\s\S]*?<\/section>/)[0];
+  const flat = text(about);
+  for (const line of ['I like the part of a project where the shape of the data and the protocol gets decided.',
+    'Based in', 'Tallinn, after three years in Berlin',
+    'Background', 'First program: a Breakout clone in QBasic, at school', 'Studied at the University of Tartu and TalTech, then left for work',
+    'Community', 'Organised the Tallinn iOS meetup for several years and gave talks there on iOS and new technologies',
+    'Talks', 'Co‑presented Nearest Neighbors, Distant Words at ElixirConf EU 2024',
+    'Off the keyboard', 'Riding motorcycles']) assert.ok(flat.includes(line), line);
+  assert.ok(about.includes('<a href="https://www.youtube.com/watch?v=8lTbtDwBN40">Nearest Neighbors, Distant Words</a>'));
+});
+
+test('footer links', () => {
+  const footer = html().match(/<footer[\s\S]*?<\/footer>/)[0];
+  const links = [...footer.matchAll(/<a href="([^"]+)">([^<]+)<\/a>/g)].map((m) => [m[1], m[2]]);
+  assert.deepEqual(links, [['mailto:mikk@ratsep.org', 'mikk@ratsep.org'], ['https://github.com/doofyus', 'GitHub'],
+    ['https://www.linkedin.com/in/mikkr', 'LinkedIn']]);
+});
+
 test('fonts are local', () => {
   const style = css();
   const faces = style.match(/@font-face\s*{[^}]*}/g) ?? [];
