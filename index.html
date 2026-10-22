@@ -228,9 +228,9 @@
 </figure>
 <div class="sub" id="swift-server">
 <h3>And on the server</h3>
-<p>A Swift backend I wrote over a Christmas break for my own startup, then a few smaller Swift services at work.</p>
-<figure class="showcase showcase-sv" data-era="sw" data-sel="geofencing" data-cycle="geofencing graphQL startups" data-interval="4200">
-<svg role="img" aria-label="A Swift server in the middle: a car crossing a zone sends it an event that goes on to a customer; a phone app and its database talk to it; a graph of vehicle data is queried from it" viewBox="0 0 300 300" width="300" height="300" fill="none" style="--pulse: 3s">
+<p>Several Swift backends for my own startups and apps, the first one written over a Christmas break, and a few smaller services at work.</p>
+<figure class="showcase showcase-sv" data-era="sw" data-sel="geofencing" data-cycle="geofencing openBanking invoices startups" data-interval="4200">
+<svg role="img" aria-label="A Swift server in the middle: a car crossing a zone sends it an event that goes on to a customer; a bank feeds it account data; invoices arrive by email; a phone app and its database talk to it" viewBox="0 0 300 300" width="300" height="300" fill="none" style="--pulse: 3s">
 <g class="grp grp-sel on" data-part="geofencing" style="--off: .4" stroke-linecap="round">
 <path d="M66 98C66 116 118 112 118 128M150 164V236" stroke="var(--line)" stroke-width="1.25"></path>
 <path class="pulse-tail" pathLength="100" d="M66 98C66 116 118 112 118 128" stroke="var(--accent)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84"></path>
@@ -254,14 +254,19 @@
 <circle class="st" data-part="startups" cx="236" cy="66" r="1.8" stroke-width="1"></circle>
 <path class="st fl" data-part="startups" d="M216 220a16 5 0 0 0 32 0a16 5 0 0 0-32 0v26a16 5 0 0 0 32 0v-26M216 233a16 5 0 0 0 32 0" stroke-width="1.4"></path>
 </g>
-<g class="grp grp-sel" data-part="graphQL" style="--off: .4" stroke-linecap="round">
-<path d="M118 164C118 188 72 192 72 214" stroke="var(--line)" stroke-width="1.25"></path>
-<path class="pulse-tail" pathLength="100" d="M118 164C118 188 72 192 72 214" stroke="var(--accent)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84" style="animation-duration: 2.8s; animation-delay: -.7s"></path>
-<path class="pulse-head" pathLength="100" d="M118 164C118 188 72 192 72 214" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 95" style="animation-duration: 2.8s; animation-delay: -.7s"></path>
-<path class="st" data-part="graphQL" d="M72 222L56 248M72 222L88 248M56 248H88" stroke-width="1.2"></path>
-<circle class="st fl" data-part="graphQL" cx="72" cy="222" r="6" stroke-width="1.4"></circle>
-<circle class="st fl" data-part="graphQL" cx="56" cy="248" r="6" stroke-width="1.4"></circle>
-<circle class="st fl" data-part="graphQL" cx="88" cy="248" r="6" stroke-width="1.4"></circle>
+<g class="grp grp-sel" data-part="openBanking" style="--off: .4" stroke-linecap="round">
+<path d="M72 216C72 192 118 188 118 164" stroke="var(--line)" stroke-width="1.25"></path>
+<path class="pulse-tail" pathLength="100" d="M72 216C72 192 118 188 118 164" stroke="var(--accent)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84" style="animation-duration: 2.8s; animation-delay: -.7s"></path>
+<path class="pulse-head" pathLength="100" d="M72 216C72 192 118 188 118 164" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 95" style="animation-duration: 2.8s; animation-delay: -.7s"></path>
+<path class="st fl" data-part="openBanking" d="M54 228L72 216L90 228Z" stroke-width="1.4" stroke-linejoin="round"></path>
+<path class="st" data-part="openBanking" d="M59 232v14M67 232v14M77 232v14M85 232v14M54 250H90" stroke-width="1.4"></path>
+</g>
+<g class="grp grp-sel" data-part="invoices" style="--off: .4" stroke-linecap="round">
+<path d="M246 146H212" stroke="var(--line)" stroke-width="1.25"></path>
+<path class="pulse-tail" pathLength="100" d="M246 146H212" stroke="var(--accent)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="20 80" style="animation-duration: 2.2s; animation-delay: -.4s"></path>
+<path class="pulse-head" pathLength="100" d="M246 146H212" stroke="var(--accent)" stroke-width="2" stroke-dasharray="7 93" style="animation-duration: 2.2s; animation-delay: -.4s"></path>
+<rect class="st fl" data-part="invoices" x="250" y="135" width="34" height="23" rx="3" stroke-width="1.4"></rect>
+<path class="st" data-part="invoices" d="M251.5 137.5L267 149L282.5 137.5" stroke-width="1.3" stroke-linejoin="round"></path>
 </g>
 <rect x="88" y="128" width="124" height="36" rx="10" stroke="var(--accent)" stroke-width="6" stroke-opacity=".14"></rect>
 <rect x="88" y="128" width="124" height="36" rx="10" stroke="var(--accent)" stroke-width="1.5" fill="var(--hifill)"></rect>
@@ -275,8 +280,9 @@
 </svg>
 <ul>
 <li><button type="button" data-id="geofencing" aria-pressed="true"><span class="item-name"><span class="mark" aria-hidden="true">.</span>geofencing</span><span class="item-note">Zones for car fleets: cross a line, an event goes out.</span></button></li>
-<li><button type="button" data-id="graphQL" aria-pressed="false"><span class="item-name"><span class="mark" aria-hidden="true">.</span>graphQL</span><span class="item-note">A GraphQL service over the vehicle data.</span></button></li>
-<li><button type="button" data-id="startups" aria-pressed="false"><span class="item-name"><span class="mark" aria-hidden="true">.</span>startups</span><span class="item-note">Backends for my own startups and apps.</span></button></li>
+<li><button type="button" data-id="openBanking" aria-pressed="false"><span class="item-name"><span class="mark" aria-hidden="true">.</span>openBanking</span><span class="item-note">Every bank account in one place, through open banking.</span></button></li>
+<li><button type="button" data-id="invoices" aria-pressed="false"><span class="item-name"><span class="mark" aria-hidden="true">.</span>invoices</span><span class="item-note">Invoices forwarded by email, read and filed.</span></button></li>
+<li><button type="button" data-id="startups" aria-pressed="false"><span class="item-name"><span class="mark" aria-hidden="true">.</span>startups</span><span class="item-note">Backends for my other ideas and apps.</span></button></li>
 </ul>
 </figure>
 </div>

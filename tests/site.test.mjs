@@ -67,7 +67,7 @@ test('era bands', () => {
     'And on the server', 'Many carmakers, one format',
     'My first real product was a Mac payroll app for the Swedish market. A year later I moved to iOS and built apps for clients, several carmakers among them.',
     'For our own hardware, I designed how phones talk to it: an encrypted Bluetooth protocol, a binary format that became the open Auto API, and the security around them.',
-    'A Swift backend I wrote over a Christmas break for my own startup, then a few smaller Swift services at work.',
+    'Several Swift backends for my own startups and apps, the first one written over a Christmas break, and a few smaller services at work.',
     'The data never stops, and no two carmakers send it the same way. I build and run a part of the pipeline: the Elixir services that bring it all in and keep it flowing, even when one side misbehaves.']) {
     assert.ok(flat.includes(s), s);
   }
@@ -124,12 +124,13 @@ test('swift illustration', () => {
 
 test('swift server illustration', () => {
   checkIllustration(figure('sw', 1), {
-    label: 'A Swift server in the middle: a car crossing a zone sends it an event that goes on to a customer; a phone app and its database talk to it; a graph of vehicle data is queried from it',
+    label: 'A Swift server in the middle: a car crossing a zone sends it an event that goes on to a customer; a bank feeds it account data; invoices arrive by email; a phone app and its database talk to it',
     open: '.', close: '',
     items: [
       ['geofencing', 'geofencing', 'Zones for car fleets: cross a line, an event goes out.'],
-      ['graphQL', 'graphQL', 'A GraphQL service over the vehicle data.'],
-      ['startups', 'startups', 'Backends for my own startups and apps.']
+      ['openBanking', 'openBanking', 'Every bank account in one place, through open banking.'],
+      ['invoices', 'invoices', 'Invoices forwarded by email, read and filed.'],
+      ['startups', 'startups', 'Backends for my other ideas and apps.']
     ]
   });
 });
