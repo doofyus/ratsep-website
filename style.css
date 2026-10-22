@@ -98,3 +98,23 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 .band .sub { margin-top: 72px; }
 .band .sub > p { margin: 0 0 32px; color: var(--era-body); }
 .showcase { margin: 0; }
+
+.showcase { display: flex; flex-wrap: wrap; gap: 32px 40px; align-items: center; }
+.showcase > svg { flex: 0 0 300px; width: 300px; height: 300px; overflow: visible; }
+.showcase ul { flex: 1 1 240px; min-width: 0; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.showcase li button { width: 100%; text-align: left; background: none; border: 0; padding: 8px 0; font: inherit; color: inherit; cursor: pointer; display: flex; flex-direction: column; gap: 2px; }
+.showcase .item-name { font-size: 18px; font-weight: 600; color: var(--ink); }
+.showcase .mark { font-family: var(--mono); font-weight: 500; color: transparent; transition: color .3s ease; }
+.showcase button[aria-pressed="true"] .mark { color: var(--accent); }
+.showcase .item-note { font-size: 15px; color: var(--note); transition: color .3s ease; }
+.showcase button[aria-pressed="true"] .item-note { color: var(--note-on, var(--note)); }
+
+.pulse-head { animation: pulse-head var(--pulse, 3.2s) linear infinite; }
+.pulse-tail { animation: pulse-tail var(--pulse, 3.2s) linear infinite; }
+@keyframes pulse-head { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@keyframes pulse-tail { from { stroke-dashoffset: 114; } to { stroke-dashoffset: 14; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-head, .pulse-tail, .moving { display: none; }
+  .showcase * { transition: none !important; }
+}

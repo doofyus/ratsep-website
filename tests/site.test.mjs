@@ -118,3 +118,11 @@ test('no forbidden names', (t) => {
   const names = readFileSync(list, 'utf8').split('\n').map((s) => s.trim().toLowerCase()).filter(Boolean);
   for (const name of names) assert.ok(!new RegExp(`\\b${name.replace(/\s+/g, '\\s+')}\\b`).test(page), `found "${name}"`);
 });
+
+test('reduced motion stops everything', () => {
+  const blocks = [...css().matchAll(/@media \(prefers-reduced-motion: reduce\)\s*{([\s\S]*?)\n}/g)].map((m) => m[1]).join('\n');
+  assert.ok(/\.pulse-head[^{]*{[^}]*(animation:\s*none|display:\s*none)/.test(blocks) || /\.pulse-head,\s*\.pulse-tail[^{]*{[^}]*(animation:\s*none|display:\s*none)/.test(blocks));
+  assert.ok(/\.pulse-tail/.test(blocks));
+  assert.ok(/\.showcase \*[^{]*{[^}]*transition:\s*none/.test(blocks));
+  assert.ok(/\.lang \.ha[^{]*{[^}]*transition:\s*none/.test(blocks));
+});

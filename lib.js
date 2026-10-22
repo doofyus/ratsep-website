@@ -23,3 +23,12 @@ export function contrast(hexA, hexB) {
   const [hi, lo] = [luminance(hexA), luminance(hexB)].sort((a, b) => b - a);
   return (hi + 0.05) / (lo + 0.05);
 }
+
+export function nextId(cycle, current) {
+  const i = cycle.indexOf(current);
+  return i === -1 ? cycle[0] : cycle[(i + 1) % cycle.length];
+}
+
+export function shouldRun({ reduced, hovered, focused, hidden }) {
+  return !(reduced || hovered || focused || hidden);
+}

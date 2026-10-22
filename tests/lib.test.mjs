@@ -27,3 +27,21 @@ test('contrast gives WCAG ratios', () => {
   assert.ok(Math.abs(contrast('#000000', '#FFFFFF') - 21) < 0.01);
   assert.ok(Math.abs(contrast('#7A6A63', '#F4E9E2') - 4.33) < 0.02);
 });
+
+test('nextId wraps around', async () => {
+  const { nextId } = await import('../lib.js');
+  assert.equal(nextId(['a', 'b', 'c'], 'c'), 'a');
+  assert.equal(nextId(['a', 'b', 'c'], 'a'), 'b');
+});
+
+test('nextId restarts from an id outside the cycle', async () => {
+  const { nextId } = await import('../lib.js');
+  assert.equal(nextId(['a', 'b'], 'more'), 'a');
+});
+
+test('shouldRun only when nothing holds it', async () => {
+  const { shouldRun } = await import('../lib.js');
+  const idle = { reduced: false, hovered: false, focused: false, hidden: false };
+  assert.equal(shouldRun(idle), true);
+  for (const flag of Object.keys(idle)) assert.equal(shouldRun({ ...idle, [flag]: true }), false, flag);
+});
