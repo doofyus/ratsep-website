@@ -327,3 +327,12 @@ test('swift title carries its idiom like the others', () => {
   const band = html().match(/<section id="swift"[\s\S]*?<div class="era-name">([\s\S]*?)<\/div>/)[1];
   assert.equal(band, '<span class="soft">.</span>Swift');
 });
+
+test('obj-c "and more" shows several small phones', () => {
+  const more = html().match(/<g class="oc-content" data-part="more">([\s\S]*?)\n<\/g>\n<\/g>/);
+  assert.ok(more, 'no more content');
+  const phones = (more[1].match(/class="oc-anim oc-pop oc-phone"/g) ?? []).length;
+  assert.ok(phones >= 2, `${phones} side phones`);
+  assert.ok(!more[1].includes('>?</text>'), 'still the question mark');
+  assert.ok(/\.showcase-oc\[data-sel="more"\] \.oc-frame\s*{[^}]*width:\s*70px/.test(css()), 'frame does not shrink');
+});
