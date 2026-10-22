@@ -243,11 +243,12 @@ a.lang:hover .ha { text-decoration: underline; text-decoration-thickness: 1px; t
 }
 
 .mini-header { position: fixed; top: 0; left: 0; right: 0; z-index: 10; padding-top: env(safe-area-inset-top);
-  background: color-mix(in srgb, var(--top, var(--bg)) 86%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  background: var(--top, var(--bg));
   border-bottom: 1px solid var(--rule); opacity: 0; transform: translateY(-8px); pointer-events: none;
   transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s; }
 .mini-header.show { opacity: 1; transform: none; pointer-events: auto; transition-delay: 0s; }
 .mini-header:not(.show) { visibility: hidden; }
+.mini-header[hidden] { display: none; }
 .mini-header .inner { display: flex; align-items: center; justify-content: space-between; gap: 8px 24px; height: 52px; }
 .mini-header .name { font-weight: 600; font-size: 15px; text-decoration: none; }
 .mini-header nav { display: flex; align-items: center; gap: 8px 22px; font-size: 14px; }

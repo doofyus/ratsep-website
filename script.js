@@ -27,6 +27,7 @@ const mini = document.querySelector('.mini-header');
 let lastY = window.scrollY;
 let shown = false;
 let ticking = false;
+let unmount = 0;
 window.addEventListener('scroll', () => {
   if (ticking) return;
   ticking = true;
@@ -38,6 +39,13 @@ window.addEventListener('scroll', () => {
     lastY = y;
     if (next === shown || !mini) return;
     shown = next;
+    clearTimeout(unmount);
+    if (shown) {
+      mini.hidden = false;
+      mini.getBoundingClientRect();
+    } else {
+      unmount = setTimeout(() => { mini.hidden = true; }, 300);
+    }
     mini.classList.toggle('show', shown);
     mini.toggleAttribute('inert', !shown);
     mini.setAttribute('aria-hidden', String(!shown));

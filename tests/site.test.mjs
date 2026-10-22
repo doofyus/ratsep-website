@@ -354,3 +354,14 @@ test('hidden mini header leaves the top edge to the browser', () => {
   const rule = css().match(/\.mini-header:not\(\.show\)\s*{([^}]*)}/);
   assert.ok(rule && /visibility:\s*hidden/.test(rule[1]));
 });
+
+test('hidden mini header leaves the layout after fading out', () => {
+  assert.ok(/\.mini-header\[hidden\]\s*{\s*display:\s*none;?\s*}/.test(css()));
+  assert.ok(/<div class="mini-header"[^>]*\bhidden\b/.test(html()));
+});
+
+test('mini header is opaque so the iOS top bar matches it', () => {
+  const rule = css().match(/\n\.mini-header {([^}]*)}/)[1];
+  assert.ok(/background:\s*var\(--top,\s*var\(--bg\)\);/.test(rule));
+  assert.ok(!/color-mix|backdrop-filter/.test(rule));
+});
