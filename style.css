@@ -100,7 +100,7 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 .showcase { margin: 0; }
 
 .showcase { display: flex; flex-wrap: wrap; gap: 32px 40px; align-items: center; }
-.showcase > svg { flex: 0 0 300px; width: 300px; height: 300px; overflow: visible; }
+.showcase > svg { flex: 0 1 300px; width: 100%; max-width: 300px; height: auto; aspect-ratio: 1; overflow: visible; }
 .showcase ul { flex: 1 1 240px; min-width: 0; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; }
 .showcase li button { width: 100%; text-align: left; background: none; border: 0; padding: 8px 0; font: inherit; color: inherit; cursor: pointer; display: flex; flex-direction: column; gap: 2px; }
 .showcase .item-name { font-size: 18px; font-weight: 600; color: var(--ink); }
