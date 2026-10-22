@@ -204,6 +204,7 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 .card .tag { font-family: var(--mono); font-size: 13px; color: var(--muted); }
 .card .tag-sw { color: var(--sw-accent); }
 .card .tag-oc { color: var(--oc-accent); }
+.card .tag-ex { color: var(--ex-accent); }
 .card h3 { margin: 0; font-size: 18px; line-height: 1.35; font-weight: 600; }
 .card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
 .lead { margin: 0 0 36px; font-size: 22px; line-height: 1.45; color: var(--ink); }

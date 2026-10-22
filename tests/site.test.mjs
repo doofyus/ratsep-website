@@ -152,9 +152,10 @@ test('elixir illustration', () => {
 test('side projects', () => {
   const side = html().match(/<section id="side"[\s\S]*?<\/section>/)[0];
   const titles = [...side.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>/g)].map((m) => text(m[1]));
-  assert.deepEqual(titles, ['Kegler', 'A startup', 'Every bank, one view', 'Nature sounds', 'The house']);
+  assert.deepEqual(titles, ['Kegler', 'LAN Organizer', 'A startup', 'Every bank, one view', 'Nature sounds', 'The house']);
   const flat = text(side);
   for (const line of ['A bowling score log for iPhone.',
+    'Plan a LAN party in real time: game votes, Steam libraries and who brings what.',
     'A privacy tool, then invoices by email. I led a couple of developers and wrote the backend and the iOS app.',
     'All your bank accounts in one iOS app, with its own Swift backend.',
     'An iOS app for nature sound observations, made for the University of Tartu’s natural history museum.',
