@@ -350,6 +350,7 @@ test('"and more" phones keep moving gently while shown', () => {
   assert.ok(html().includes('class="oc-anim oc-scan"'));
 });
 
-test('hidden mini header carries the top colour for iOS Safari', () => {
-  assert.ok(/\.mini-header:not\(\.show\)\s*{[^}]*background:\s*var\(--top,\s*var\(--bg\)\)/.test(css()));
+test('hidden mini header leaves the top edge to the browser', () => {
+  const rule = css().match(/\.mini-header:not\(\.show\)\s*{([^}]*)}/);
+  assert.ok(rule && /visibility:\s*hidden/.test(rule[1]));
 });
