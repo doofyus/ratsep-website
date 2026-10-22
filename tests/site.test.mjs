@@ -252,3 +252,13 @@ test('reduced motion stops everything', () => {
   assert.ok(/\.showcase \*[^{]*{[^}]*transition:\s*none/.test(blocks));
   assert.ok(/\.lang \.ha[^{]*{[^}]*transition:\s*none/.test(blocks));
 });
+
+test('the repo does not carry the names list', (t) => {
+  const list = '.ai/context/forbidden-names.txt';
+  if (!existsSync(list)) return t.skip('names list is local only');
+  const names = readFileSync(list, 'utf8').split('\n').map((s) => s.trim().toLowerCase()).filter(Boolean);
+  for (const file of ['tests/site.test.mjs', 'tests/lib.test.mjs', 'README.md', 'style.css', 'script.js', 'lib.js']) {
+    const body = readFileSync(file, 'utf8').toLowerCase();
+    for (const name of names) assert.ok(!new RegExp(`\\b${name.replace(/\s+/g, '\\s+')}\\b`).test(body), `${file} names "${name}"`);
+  }
+});
