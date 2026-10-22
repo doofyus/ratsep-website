@@ -63,7 +63,7 @@ test('era bands', () => {
   const ids = [...eras[1].matchAll(/<section[^>]*id="(\w+)"/g)].map((m) => m[1]);
   assert.deepEqual(ids, ['objc', 'swift', 'elixir']);
   const flat = text(eras[1]);
-  for (const s of ['2011 – 2016', '2014 – 2024', '2022 – today', 'From the Mac to iOS', 'Every byte counts',
+  for (const s of ['2011 – 2016', '2014 – today', '2022 – today', 'From the Mac to iOS', 'Every byte counts',
     'And on the server', 'Many carmakers, one format',
     'My first real product was a Mac payroll app for the Swedish market. A year later I moved to iOS and built apps for clients, several carmakers among them.',
     'For our own hardware, I designed how phones talk to it: an encrypted Bluetooth protocol, a binary format that became the open Auto API, and the security around them.',
