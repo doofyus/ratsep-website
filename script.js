@@ -32,8 +32,9 @@ function initShowcase(figure) {
   };
 
   const select = (id) => {
-    if (id === figure.dataset.sel) return;
     clearTimeout(swap);
+    figure.classList.remove('fading');
+    if (id === figure.dataset.sel) return;
     const delay = reducedQuery.matches ? 0 : swapDelay;
     if (!delay) return apply(id);
     figure.classList.add('fading');
@@ -55,7 +56,7 @@ function initShowcase(figure) {
   }
   figure.addEventListener('pointerenter', () => { state.hovered = true; schedule(); });
   figure.addEventListener('pointerleave', () => { state.hovered = false; schedule(); });
-  figure.addEventListener('focusin', () => { state.focused = true; schedule(); });
+  figure.addEventListener('focusin', (e) => { state.focused = e.target.matches(':focus-visible'); schedule(); });
   figure.addEventListener('focusout', (e) => { if (!figure.contains(e.relatedTarget)) { state.focused = false; schedule(); } });
   document.addEventListener('visibilitychange', schedule);
   reducedQuery.addEventListener('change', schedule);
