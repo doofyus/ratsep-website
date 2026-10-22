@@ -37,6 +37,25 @@ test('sticky only on wide screens', () => {
   assert.ok(!/position:\s*sticky/.test(outside));
 });
 
+const text = (fragment) => fragment.replace(/<[^>]+>/g, '').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&amp;/g, '&').replace(/\s+/g, ' ');
+
+test('hero copy', () => {
+  const page = html();
+  assert.ok(/<h1[^>]*>Mikk Rätsep<\/h1>/.test(page));
+  const flat = text(page);
+  assert.ok(flat.includes('Software engineer in Tallinn. Fifteen years of writing [Objective‑C], Swift and |> Elixir, much of it on Bluetooth, security and vehicle data, from iPhone apps to the protocol between phone and car to the backend behind it all.'));
+  assert.ok(flat.includes('Today I work on a pipeline that moves millions of car data points an hour: integrations across carmakers, multiple layers deep and fault‑tolerant by design.'));
+  for (const era of ['oc', 'sw', 'ex']) assert.ok(page.includes(`class="lang lang-${era}"`), era);
+});
+
+test('hero visible without js', () => {
+  const hiding = [...css().matchAll(/([^{}]+){[^}]*opacity:\s*0[;\s]/g)].map((m) => m[1].trim());
+  assert.ok(hiding.length > 0);
+  for (const selector of hiding.filter((s) => s.includes('lang'))) {
+    assert.ok(selector.startsWith('html.js .hero:not(.in)'), selector);
+  }
+});
+
 test('fonts are local', () => {
   const style = css();
   const faces = style.match(/@font-face\s*{[^}]*}/g) ?? [];

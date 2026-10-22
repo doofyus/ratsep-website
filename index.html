@@ -12,6 +12,13 @@
   if (stored !== 'light' && stored !== 'dark') stored = null;
   var dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
   document.documentElement.dataset.theme = stored || (dark ? 'dark' : 'light');
+  document.documentElement.classList.add('js');
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(function () {
+      var hero = document.querySelector('.hero');
+      if (hero) hero.classList.add('in');
+    }, 60);
+  });
 })();
 </script>
 <link rel="stylesheet" href="style.css">
@@ -31,6 +38,11 @@
 </button>
 </nav>
 </header>
+<section class="hero">
+<h1>Mikk Rätsep</h1>
+<p>Software engineer in Tallinn. Fifteen years of writing <span class="lang lang-oc"><span class="ha b-l">[</span><span class="ha name">Objective‑C</span><span class="ha b-r">]</span></span>, <span class="lang lang-sw"><span class="ha">Swift</span></span> and <span class="lang lang-ex"><span class="ha pipe">|&gt;</span> <span class="ha push">Elixir</span></span>, much of it on Bluetooth, security and vehicle data, from iPhone apps to the protocol between phone and car to the backend behind it all.</p>
+<p>Today I work on a pipeline that moves millions of car data points an hour: integrations across carmakers, multiple layers deep and fault‑tolerant by design.</p>
+</section>
 </div>
 </body>
 </html>

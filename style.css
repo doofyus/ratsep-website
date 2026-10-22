@@ -50,3 +50,33 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 @media (min-width: 861px) {
   .era-title { position: sticky; top: 40px; align-self: flex-start; }
 }
+
+.hero { padding: 128px 0; max-width: 820px; }
+.hero h1 { margin: 0 0 28px; font-size: clamp(48px, 7vw, 88px); line-height: 1; font-weight: 700; letter-spacing: -0.03em; }
+.hero p { margin: 0; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.45; color: var(--body); }
+.hero p + p { margin-top: 16px; }
+
+.lang { white-space: nowrap; }
+.lang .ha { display: inline-block; }
+.lang-oc { font-family: var(--mono); color: var(--oc-accent); }
+.lang-oc .b-l, .lang-oc .b-r { color: var(--oc-soft); }
+.lang-sw { font-weight: 700; color: var(--sw-accent); }
+.lang-ex { color: var(--ex-accent); }
+.lang-ex .pipe { font-family: var(--mono); color: var(--ex-soft); }
+
+.lang-oc .b-l, .lang-oc .b-r { transition: opacity .45s cubic-bezier(.2,.9,.2,1) .5s, transform .45s cubic-bezier(.2,.9,.2,1) .5s; }
+.lang-oc .name { transition: opacity .4s ease-out .35s; }
+.lang-sw .ha { transition: opacity .3s cubic-bezier(.1,.9,.2,1) 1.15s, transform .3s cubic-bezier(.1,.9,.2,1) 1.15s; }
+.lang-ex .pipe { transition: opacity .4s cubic-bezier(.3,.7,.2,1) 1.65s, transform .4s cubic-bezier(.3,.7,.2,1) 1.65s; }
+.lang-ex .push { transition: opacity .4s cubic-bezier(.3,.7,.2,1) 1.85s, transform .4s cubic-bezier(.3,.7,.2,1) 1.85s; }
+
+html.js .hero:not(.in) .lang .ha { opacity: 0; }
+html.js .hero:not(.in) .lang-oc .b-l { transform: translateX(-0.5em); }
+html.js .hero:not(.in) .lang-oc .b-r { transform: translateX(0.5em); }
+html.js .hero:not(.in) .lang-sw .ha { transform: translateX(-0.6em); }
+html.js .hero:not(.in) .lang-ex .pipe { transform: translateX(-0.9em); }
+html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
+
+@media (prefers-reduced-motion: reduce) {
+  .lang .ha { transition: none !important; transform: none !important; }
+}
