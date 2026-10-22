@@ -1,11 +1,17 @@
-import { nextId, shouldRun, isHover, headerVisible } from './lib.js';
+import { nextId, shouldRun, isHover, headerVisible, themeColor } from './lib.js';
 
 const root = document.documentElement;
+
+const paintBrowserBar = () => {
+  for (const meta of document.querySelectorAll('meta[name="theme-color"]')) meta.content = themeColor(root.dataset.theme);
+};
+paintBrowserBar();
 
 for (const toggle of document.querySelectorAll('.theme-toggle')) {
   toggle.addEventListener('click', () => {
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;
+    paintBrowserBar();
     try { localStorage.setItem('theme', next); } catch {}
   });
 }

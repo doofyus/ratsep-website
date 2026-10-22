@@ -43,6 +43,15 @@ text, local fonts only, and the drawing markup.
 The page follows the system light/dark setting until someone presses the toggle; the choice is
 kept in `localStorage`. A small inline script in `<head>` sets `data-theme` before the first paint.
 
+The browser bar colour (`theme-color`) follows the chosen theme. Without JavaScript the page stays
+light and the toggle is hidden.
+
+## Navigation
+
+The language names in the opening text link to their eras. In-page links scroll smoothly unless
+the visitor prefers reduced motion. Further down the page, a thin header fades in when scrolling
+up and hides again when scrolling down; the sticky era titles move below it while it shows.
+
 ## Drawings
 
 Each drawing is a `<figure class="showcase">` with an inline SVG and a list of buttons:
@@ -52,10 +61,11 @@ Each drawing is a `<figure class="showcase">` with an inline SVG and a list of b
 - Elements with `data-part="id …"` get the class `on` while one of their ids is selected;
   groups with `data-dim="id …"` get `dim`. CSS does the rest (`.st`, `.fl`, `.fa`, `.glow`,
   `.grp`, `.grp-sel`).
-- `data-cycle` lists the ids that advance on their own every `data-interval` ms. Hovering or
-  focusing the drawing pauses it, and so does `prefers-reduced-motion`.
-- The Obj‑C drawing also uses `data-swap-delay`, `data-morph-ids` and `data-hover-select` for
-  its Mac ↔ iPhone morph.
+- `data-cycle` lists the ids that advance on their own every `data-interval` ms, only while the
+  drawing is on screen. A mouse over it or keyboard focus inside it pauses it, and so does
+  `prefers-reduced-motion`.
+- The Obj‑C drawing also uses `data-swap-delay`, `data-morph-ids` and `data-hover-select` (mouse
+  only) for its Mac ↔ iPhone morph, and plays its entrance the first time it scrolls into view.
 
 ## Colours changed for contrast
 

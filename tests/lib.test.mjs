@@ -62,3 +62,9 @@ test('mini header shows when scrolling up away from the top', async () => {
   assert.equal(headerVisible({ ...base, current: true, y: 1201, lastY: 1203 }), true);
   assert.equal(headerVisible({ ...base, current: false, y: 1203, lastY: 1201 }), false);
 });
+
+test('browser bar colour matches the theme', async () => {
+  const { themeColor } = await import('../lib.js');
+  assert.equal(themeColor('light'), '#F5F4F0');
+  assert.equal(themeColor('dark'), '#1B1E23');
+});

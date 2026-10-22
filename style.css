@@ -162,7 +162,6 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
   .oc-content.on, .oc-anim { animation: none !important; opacity: 1; }
   .oc-draw { stroke-dashoffset: 0; }
   .oc-pop, .oc-grow { transform: none; }
-  .oc-pulse { opacity: 0; }
   .oc-ring { stroke: var(--oc-accent); }
   .oc-light { fill-opacity: .85; }
 }
@@ -247,3 +246,5 @@ a.lang:hover .ha { text-decoration: underline; text-decoration-thickness: 1px; t
 @media (prefers-reduced-motion: reduce) {
   .mini-header, .era-title { transition: none; }
 }
+
+html:not(.js) .theme-toggle { display: none; }

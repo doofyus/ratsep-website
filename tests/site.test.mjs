@@ -310,3 +310,12 @@ test('wrapped sections line up with the hero text', () => {
   const narrow = css().match(/@media \(max-width: 907px\)\s*{([\s\S]*?)\n}/);
   assert.ok(narrow && /\.split > \.right\s*{[^}]*max-width:\s*820px/.test(narrow[1]));
 });
+
+test('theme toggle hidden without js', () => {
+  assert.ok(/html:not\(\.js\) \.theme-toggle\s*{\s*display:\s*none;?\s*}/.test(css()));
+});
+
+test('obj-c pulse ring stays visible under reduced motion, as in the sketch', () => {
+  const blocks = [...css().matchAll(/@media \(prefers-reduced-motion: reduce\)\s*{([\s\S]*?)\n}/g)].map((m) => m[1]).join('\n');
+  assert.ok(!/\.oc-pulse\s*{[^}]*opacity:\s*0/.test(blocks));
+});

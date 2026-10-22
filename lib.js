@@ -43,3 +43,7 @@ export function headerVisible({ y, lastY, threshold, current }) {
   if (Math.abs(delta) < 4) return current;
   return delta < 0;
 }
+
+export function themeColor(theme) {
+  return theme === 'dark' ? '#1B1E23' : '#F5F4F0';
+}
