@@ -47,7 +47,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 :root[data-theme="dark"] .theme-toggle .sun { display: block; }
 :root[data-theme="dark"] .theme-toggle .moon { display: none; }
 
-@media (min-width: 861px) {
+@media (min-width: 908px) {
   .era-title { position: sticky; top: 40px; align-self: flex-start; }
 }
 
@@ -170,11 +170,12 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 .band-sw { --note: var(--sw-note); --note-on: #5A4A44; --cbg: #F4E9E2; --line: #E2CDC2; --back: #A88070; --stroke: #C9A598; --fill: #FBF4F0; --hifill: #F7E5DC; }
 :root[data-theme="dark"] .band-sw { --note-on: #C4B2AA; --cbg: #2A1F1B; --line: #4D3A33; --back: #C9A08F; --stroke: #6E5048; --fill: #33251F; --hifill: #3D2B24; }
 
-.showcase .st { stroke: var(--stroke); transition: stroke .4s ease, fill .4s ease, opacity .4s ease; }
+.showcase .st { stroke: var(--stroke); }
+.showcase :is(.st, .fl, .fa) { transition: stroke .4s ease, fill .4s ease, opacity .4s ease; }
 .showcase .st.on { stroke: var(--accent); }
-.showcase .fl { fill: var(--fill); transition: fill .4s ease; }
+.showcase .fl { fill: var(--fill); }
 .showcase .fl.on { fill: var(--hifill); }
-.showcase .fa { fill: var(--stroke); transition: fill .4s ease; }
+.showcase .fa { fill: var(--stroke); }
 .showcase .fa.on { fill: var(--accent); }
 .showcase .glow { opacity: 0; transition: opacity .4s ease; }
 .showcase .glow.on { opacity: 1; }

@@ -31,7 +31,7 @@ test('text tokens pass AA', async () => {
 
 test('sticky only on wide screens', () => {
   const style = css();
-  const wide = style.match(/@media \(min-width: 861px\)\s*{([\s\S]*?)\n}/);
+  const wide = style.match(/@media \(min-width: 908px\)\s*{([\s\S]*?)\n}/);
   assert.ok(wide && /\.era-title\s*{[^}]*position:\s*sticky/.test(wide[1]));
   const outside = style.replace(wide[0], '');
   assert.ok(!/position:\s*sticky/.test(outside));
@@ -260,5 +260,14 @@ test('the repo does not carry the names list', (t) => {
   for (const file of ['tests/site.test.mjs', 'tests/lib.test.mjs', 'README.md', 'style.css', 'script.js', 'lib.js']) {
     const body = readFileSync(file, 'utf8').toLowerCase();
     for (const name of names) assert.ok(!new RegExp(`\\b${name.replace(/\s+/g, '\\s+')}\\b`).test(body), `${file} names "${name}"`);
+  }
+});
+
+test('highlight fades stroke and fill together', () => {
+  const style = css();
+  for (const cls of ['fl', 'fa']) {
+    const rule = style.match(new RegExp(`\\.showcase \\.${cls} {([^}]*)}`));
+    assert.ok(rule, cls);
+    assert.ok(!/transition/.test(rule[1]), `.${cls} overrides the shared transition`);
   }
 });
