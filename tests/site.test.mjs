@@ -43,7 +43,7 @@ test('hero copy', () => {
   const page = html();
   assert.ok(/<h1[^>]*>Mikk Rätsep<\/h1>/.test(page));
   const flat = text(page);
-  assert.ok(flat.includes('Software engineer in Tallinn. Fifteen years of writing [Objective‑C], Swift and |> Elixir, much of it on Bluetooth, security and vehicle data, from iPhone apps to the protocol between phone and car to the backend behind it all.'));
+  assert.ok(flat.includes('Software engineer in Tallinn. Fifteen years of writing [Objective‑C], .Swift and |> Elixir, much of it on Bluetooth, security and vehicle data, from iPhone apps to the protocol between phone and car to the backend behind it all.'));
   assert.ok(flat.includes('Today I work on a pipeline that moves millions of car data points an hour: integrations across carmakers, multiple layers deep and fault‑tolerant by design.'));
   for (const era of ['oc', 'sw', 'ex']) assert.ok(page.includes(`class="lang lang-${era}"`), era);
 });
@@ -318,4 +318,9 @@ test('theme toggle hidden without js', () => {
 test('obj-c pulse ring stays visible under reduced motion, as in the sketch', () => {
   const blocks = [...css().matchAll(/@media \(prefers-reduced-motion: reduce\)\s*{([\s\S]*?)\n}/g)].map((m) => m[1]).join('\n');
   assert.ok(!/\.oc-pulse\s*{[^}]*opacity:\s*0/.test(blocks));
+});
+
+test('swift title carries its idiom like the others', () => {
+  const band = html().match(/<section id="swift"[\s\S]*?<div class="era-name">([\s\S]*?)<\/div>/)[1];
+  assert.equal(band, '<span class="soft">.</span>Swift');
 });

@@ -9,7 +9,7 @@
   color-scheme: light;
   --bg: #F5F4F0; --ink: #22252A; --body: #3A3F47; --muted: #4A4F57; --rule: #D9D8D2;
   --oc-band: #E9EDF2; --oc-accent: #3D5F8F; --oc-soft: #A6B6CC; --oc-body: #343A44; --oc-muted: #4A5566; --oc-note: #4A5566;
-  --sw-band: #F4E9E2; --sw-accent: #B9432A; --sw-soft: #E9CFC3; --sw-body: #3E3430; --sw-muted: #5A4A44; --sw-note: #766660;
+  --sw-band: #F4E9E2; --sw-accent: #B9432A; --sw-soft: #D9A994; --sw-body: #3E3430; --sw-muted: #5A4A44; --sw-note: #766660;
   --ex-band: #ECE7F0; --ex-accent: #6B4A7D; --ex-soft: #B3A0BF; --ex-body: #3A3340; --ex-muted: #554B5B; --ex-note: #6F6574;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
   --sans: "Schibsted Grotesk", system-ui, sans-serif;
@@ -19,7 +19,7 @@
   color-scheme: dark;
   --bg: #1B1E23; --ink: #ECE9E4; --body: #C4C8CE; --muted: #A8ADB5; --rule: #343941;
   --oc-band: #1A2230; --oc-accent: #8FB0E0; --oc-soft: #4E6584; --oc-body: #C9CFD8; --oc-muted: #9AA6B8; --oc-note: #9AA6B8;
-  --sw-band: #2A1F1B; --sw-accent: #F08A6C; --sw-soft: #4A3129; --sw-body: #D8CCC7; --sw-muted: #BBA49B; --sw-note: #A08D85;
+  --sw-band: #2A1F1B; --sw-accent: #F08A6C; --sw-soft: #6E4536; --sw-body: #D8CCC7; --sw-muted: #BBA49B; --sw-note: #A08D85;
   --ex-band: #241D2B; --ex-accent: #C3A6DA; --ex-soft: #6C5880; --ex-body: #D3CCD9; --ex-muted: #ABA0B5; --ex-note: #8F849B;
 }
 
@@ -61,19 +61,23 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .lang-oc { font-family: var(--mono); color: var(--oc-accent); }
 .lang-oc .b-l, .lang-oc .b-r { color: var(--oc-soft); }
 .lang-sw { font-weight: 700; color: var(--sw-accent); }
+.lang-sw .dot { font-family: var(--mono); font-weight: 500; color: var(--sw-soft); }
+.band-sw .era-name .soft { font-family: var(--mono); font-weight: 500; }
 .lang-ex { color: var(--ex-accent); }
 .lang-ex .pipe { font-family: var(--mono); color: var(--ex-soft); }
 
 .lang-oc .b-l, .lang-oc .b-r { transition: opacity .45s cubic-bezier(.2,.9,.2,1) .5s, transform .45s cubic-bezier(.2,.9,.2,1) .5s; }
 .lang-oc .name { transition: opacity .4s ease-out .35s; }
-.lang-sw .ha { transition: opacity .3s cubic-bezier(.1,.9,.2,1) 1.15s, transform .3s cubic-bezier(.1,.9,.2,1) 1.15s; }
+.lang-sw .dot { transition: opacity .35s cubic-bezier(.3,.7,.2,1) .95s, transform .35s cubic-bezier(.3,.7,.2,1) .95s; }
+.lang-sw .word { transition: opacity .3s cubic-bezier(.1,.9,.2,1) 1.15s, transform .3s cubic-bezier(.1,.9,.2,1) 1.15s; }
 .lang-ex .pipe { transition: opacity .4s cubic-bezier(.3,.7,.2,1) 1.65s, transform .4s cubic-bezier(.3,.7,.2,1) 1.65s; }
 .lang-ex .push { transition: opacity .4s cubic-bezier(.3,.7,.2,1) 1.85s, transform .4s cubic-bezier(.3,.7,.2,1) 1.85s; }
 
 html.js .hero:not(.in) .lang .ha { opacity: 0; }
 html.js .hero:not(.in) .lang-oc .b-l { transform: translateX(-0.5em); }
 html.js .hero:not(.in) .lang-oc .b-r { transform: translateX(0.5em); }
-html.js .hero:not(.in) .lang-sw .ha { transform: translateX(-0.6em); }
+html.js .hero:not(.in) .lang-sw .dot { transform: translateX(-0.8em); }
+html.js .hero:not(.in) .lang-sw .word { transform: translateX(-0.6em); }
 html.js .hero:not(.in) .lang-ex .pipe { transform: translateX(-0.9em); }
 html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 
