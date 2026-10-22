@@ -336,3 +336,7 @@ test('obj-c "and more" shows several small phones', () => {
   assert.ok(!more[1].includes('>?</text>'), 'still the question mark');
   assert.ok(/\.showcase-oc\[data-sel="more"\] \.oc-frame\s*{[^}]*width:\s*70px/.test(css()), 'frame does not shrink');
 });
+
+test('obj-c cycle includes and more', () => {
+  assert.ok(figure('oc').includes('data-cycle="mac tv car more"'));
+});
