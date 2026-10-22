@@ -16,7 +16,8 @@ function initShowcase(figure) {
   const swapDelay = Number(figure.dataset.swapDelay) || 0;
   const morphIds = (figure.dataset.morphIds || '').split(/\s+/).filter(Boolean);
   const buttons = [...figure.querySelectorAll('button[data-id]')];
-  const state = { hovered: false, focused: false };
+  const state = { hovered: false, focused: false, offscreen: 'IntersectionObserver' in window };
+  let seen = false;
   let timer = 0;
   let swap = 0;
 
@@ -43,7 +44,8 @@ function initShowcase(figure) {
 
   const schedule = () => {
     clearTimeout(timer);
-    if (!cycle.length || !shouldRun({ reduced: reducedQuery.matches, hidden: document.hidden, ...state })) return;
+    const { hovered, focused, offscreen } = state;
+    if (!cycle.length || !shouldRun({ reduced: reducedQuery.matches, hidden: document.hidden || offscreen, hovered, focused })) return;
     timer = setTimeout(() => { select(nextId(cycle, figure.dataset.sel)); schedule(); }, interval);
   };
 
@@ -60,6 +62,22 @@ function initShowcase(figure) {
   figure.addEventListener('focusout', (e) => { if (!figure.contains(e.relatedTarget)) { state.focused = false; schedule(); } });
   document.addEventListener('visibilitychange', schedule);
   reducedQuery.addEventListener('change', schedule);
+
+  if (state.offscreen) {
+    new IntersectionObserver((entries) => {
+      const visible = entries.at(-1).intersectionRatio >= 0.35;
+      state.offscreen = !visible;
+      if (visible && !seen) {
+        seen = true;
+        for (const el of figure.querySelectorAll('.oc-content.on')) {
+          el.classList.remove('on');
+          el.getBBox();
+          el.classList.add('on');
+        }
+      }
+      schedule();
+    }, { threshold: [0, 0.35] }).observe(figure);
+  }
   schedule();
 }
 
