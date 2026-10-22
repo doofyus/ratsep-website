@@ -228,7 +228,7 @@ test('document basics', () => {
   const page = html();
   assert.ok(page.includes('<html lang="en"'));
   assert.ok(page.includes('<meta charset="utf-8">'));
-  assert.ok(page.includes('<meta name="viewport" content="width=device-width, initial-scale=1">'));
+  assert.ok(page.includes('<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'));
   assert.ok(page.includes('<title>Mikk Rätsep</title>'));
 });
 
@@ -287,4 +287,10 @@ test('drawings are smaller and centred on phones', () => {
   const max = Number(rule[1].match(/max-width:\s*(\d+)px/)?.[1]);
   assert.ok(max && max <= 260, `max-width ${max}`);
   assert.ok(/margin-inline:\s*auto/.test(rule[1]));
+});
+
+test('content keeps clear of the notch', () => {
+  const inner = css().match(/\n\.inner {([^}]*)}/)[1];
+  assert.ok(/padding-left:\s*max\(var\(--gutter\), env\(safe-area-inset-left\)\)/.test(inner));
+  assert.ok(/padding-right:\s*max\(var\(--gutter\), env\(safe-area-inset-right\)\)/.test(inner));
 });

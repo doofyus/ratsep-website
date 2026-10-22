@@ -34,7 +34,7 @@ a:hover { text-decoration-thickness: 2px; }
 a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; border-radius: 2px; }
 .mono { font-family: var(--mono); }
 
-.inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.inner { --gutter: 24px; max-width: calc(1120px - 48px + 2 * var(--gutter)); margin: 0 auto; padding-left: max(var(--gutter), env(safe-area-inset-left)); padding-right: max(var(--gutter), env(safe-area-inset-right)); }
 .split { display: flex; flex-wrap: wrap; gap: 32px 80px; }
 .split > .left { flex: 1 1 340px; }
 .split > .right { flex: 999 1 440px; min-width: 0; max-width: 600px; }
@@ -212,7 +212,7 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 .site-footer { border-top: 1px solid var(--rule); padding-top: 24px; display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 15px; }
 
 @media (max-width: 560px) {
-  .inner { padding: 0 28px; }
+  .inner { --gutter: 28px; }
   .showcase { gap: 24px 40px; }
   .showcase > svg { max-width: 240px; margin-inline: auto; }
 }
