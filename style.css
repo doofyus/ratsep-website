@@ -155,7 +155,10 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 .oc-content.on .oc-light { animation: oc-light .3s ease var(--d) forwards; }
 .oc-grow { transform-origin: 112px 240px; transform: scaleX(0); }
 .oc-bar { transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(0); }
-.oc-content.on .oc-bar { animation: oc-bar .45s cubic-bezier(.2,.9,.3,1.1) var(--d) forwards; }
+.oc-content.on .oc-bar { animation: oc-bar .45s cubic-bezier(.2,.9,.3,1.1) var(--d) forwards, oc-sway 2.6s ease-in-out calc(var(--d) + .6s + var(--t, 0s)) infinite alternate; }
+.oc-content.on .oc-tile { animation: oc-pop .3s cubic-bezier(.2,.9,.3,1.2) var(--d) forwards, oc-tap 3.2s ease-in-out calc(var(--d) + 1s + var(--t, 0s)) infinite; }
+.oc-scan { opacity: 0; fill-opacity: .16; }
+.oc-content.on .oc-scan { animation: oc-scan 5s ease-in-out 1.8s infinite; }
 .oc-content.on .oc-grow { animation: oc-grow 1s ease-out 2.9s forwards; }
 @keyframes oc-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes oc-draw { from { stroke-dashoffset: 120; } to { stroke-dashoffset: 0; } }
@@ -166,6 +169,9 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 @keyframes oc-light { 0% { fill-opacity: 0; } 100% { fill-opacity: .85; } }
 @keyframes oc-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes oc-bar { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes oc-sway { from { transform: scaleY(1); } to { transform: scaleY(.7); } }
+@keyframes oc-tap { 0%, 84%, 100% { transform: none; } 90% { transform: scale(.82); } }
+@keyframes oc-scan { 0% { opacity: 0; transform: none; } 6%, 18% { opacity: 1; transform: none; } 24%, 36% { opacity: 1; transform: translateY(14px); } 42%, 54% { opacity: 1; transform: translateY(28px); } 60%, 72% { opacity: 1; transform: translateY(42px); } 78%, 90% { opacity: 1; transform: translateY(56px); } 100% { opacity: 0; transform: translateY(56px); } }
 @media (prefers-reduced-motion: reduce) {
   .oc-scale, .oc-frame, .oc-deco, .oc-contents { transition: none !important; }
   .oc-content.on, .oc-anim { animation: none !important; opacity: 1; }

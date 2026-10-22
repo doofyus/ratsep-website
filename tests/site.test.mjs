@@ -340,3 +340,12 @@ test('obj-c "and more" shows several small phones', () => {
 test('obj-c cycle includes and more', () => {
   assert.ok(figure('oc').includes('data-cycle="mac tv car more"'));
 });
+
+test('"and more" phones keep moving gently while shown', () => {
+  const style = css();
+  for (const name of ['oc-scan', 'oc-tap', 'oc-sway']) {
+    assert.ok(new RegExp(`\\.oc-content\\.on [^{]*{[^}]*${name}[^;]*infinite`).test(style), name);
+    assert.ok(style.includes(`@keyframes ${name}`), `keyframes ${name}`);
+  }
+  assert.ok(html().includes('class="oc-anim oc-scan"'));
+});
