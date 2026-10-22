@@ -278,3 +278,13 @@ test('list names use each drawing ink in dark', () => {
   assert.ok(/:root\[data-theme="dark"\] \.band-sw {[^}]*--item-ink: #EDE3DE/.test(style));
   assert.ok(/:root\[data-theme="dark"\] \.band-ex {[^}]*--item-ink: #D9D1E2/.test(style));
 });
+
+test('drawings are smaller and centred on phones', () => {
+  const phone = css().match(/@media \(max-width: 560px\)\s*{([\s\S]*?)\n}/);
+  assert.ok(phone, 'no phone media query');
+  const rule = phone[1].match(/\.showcase > svg\s*{([^}]*)}/);
+  assert.ok(rule, 'no svg rule for phones');
+  const max = Number(rule[1].match(/max-width:\s*(\d+)px/)?.[1]);
+  assert.ok(max && max <= 260, `max-width ${max}`);
+  assert.ok(/margin-inline:\s*auto/.test(rule[1]));
+});
