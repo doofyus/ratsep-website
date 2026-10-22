@@ -52,3 +52,13 @@ test('only a mouse counts as hovering', async () => {
   assert.equal(isHover({ pointerType: 'touch' }), false);
   assert.equal(isHover({ pointerType: 'pen' }), false);
 });
+
+test('mini header shows when scrolling up away from the top', async () => {
+  const { headerVisible } = await import('../lib.js');
+  const base = { threshold: 400, current: false };
+  assert.equal(headerVisible({ ...base, y: 1200, lastY: 1260 }), true);
+  assert.equal(headerVisible({ ...base, current: true, y: 1260, lastY: 1200 }), false);
+  assert.equal(headerVisible({ ...base, current: true, y: 300, lastY: 340 }), false);
+  assert.equal(headerVisible({ ...base, current: true, y: 1201, lastY: 1203 }), true);
+  assert.equal(headerVisible({ ...base, current: false, y: 1203, lastY: 1201 }), false);
+});

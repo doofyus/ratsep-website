@@ -36,3 +36,10 @@ export function shouldRun({ reduced, hovered, focused, hidden }) {
 export function isHover(event) {
   return event.pointerType === 'mouse';
 }
+
+export function headerVisible({ y, lastY, threshold, current }) {
+  if (y <= threshold) return false;
+  const delta = y - lastY;
+  if (Math.abs(delta) < 4) return current;
+  return delta < 0;
+}

@@ -294,3 +294,19 @@ test('content keeps clear of the notch', () => {
   assert.ok(/padding-left:\s*max\(var\(--gutter\), env\(safe-area-inset-left\)\)/.test(inner));
   assert.ok(/padding-right:\s*max\(var\(--gutter\), env\(safe-area-inset-right\)\)/.test(inner));
 });
+
+test('hero language names link to their eras', () => {
+  const hero = html().match(/<section class="hero">[\s\S]*?<\/section>/)[0];
+  for (const [era, id] of [['oc', 'objc'], ['sw', 'swift'], ['ex', 'elixir']]) {
+    assert.ok(hero.includes(`<a class="lang lang-${era}" href="#${id}">`), era);
+  }
+});
+
+test('in-page links scroll smoothly unless motion is reduced', () => {
+  assert.ok(/@media \(prefers-reduced-motion: no-preference\)\s*{\s*html\s*{\s*scroll-behavior:\s*smooth;/.test(css()));
+});
+
+test('wrapped sections line up with the hero text', () => {
+  const narrow = css().match(/@media \(max-width: 907px\)\s*{([\s\S]*?)\n}/);
+  assert.ok(narrow && /\.split > \.right\s*{[^}]*max-width:\s*820px/.test(narrow[1]));
+});

@@ -1,12 +1,35 @@
-import { nextId, shouldRun, isHover } from './lib.js';
+import { nextId, shouldRun, isHover, headerVisible } from './lib.js';
 
 const root = document.documentElement;
 
-document.getElementById('theme-toggle')?.addEventListener('click', () => {
-  const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-  root.dataset.theme = next;
-  try { localStorage.setItem('theme', next); } catch {}
-});
+for (const toggle of document.querySelectorAll('.theme-toggle')) {
+  toggle.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch {}
+  });
+}
+
+const mini = document.querySelector('.mini-header');
+let lastY = window.scrollY;
+let shown = false;
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    ticking = false;
+    const y = window.scrollY;
+    const next = headerVisible({ y, lastY, threshold: 400, current: shown });
+    lastY = y;
+    if (next === shown || !mini) return;
+    shown = next;
+    mini.classList.toggle('show', shown);
+    mini.toggleAttribute('inert', !shown);
+    mini.setAttribute('aria-hidden', String(!shown));
+    root.classList.toggle('header-on', shown);
+  });
+}, { passive: true });
 
 const reducedQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
