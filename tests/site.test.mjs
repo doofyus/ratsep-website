@@ -161,7 +161,7 @@ test('side projects', () => {
     'An iOS app for nature sound observations, made for the University of Tartu’s natural history museum.',
     'Dashboards, automations, smart switches and the rest of the smart home.']) assert.ok(flat.includes(line), line);
   assert.ok(side.includes('<a href="https://kegler.ratsep.org">Kegler</a>'));
-  assert.ok(side.includes('<a href="https://lan-organizer.fly.dev">LAN Organizer</a>'));
+  assert.ok(side.includes('<a href="https://lan-organizer.ratsep.org">LAN Organizer</a>'));
 });
 
 test('about', () => {
