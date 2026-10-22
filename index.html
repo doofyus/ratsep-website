@@ -135,7 +135,69 @@
 <div class="right">
 <h2>Every byte counts</h2>
 <p>For our own hardware, I designed how phones talk to it: an encrypted Bluetooth protocol, a binary format that became the open <a href="https://github.com/highmobility/auto-api">Auto API</a>, and the security around them.</p>
-<figure class="showcase" data-era="sw"></figure>
+<figure class="showcase showcase-sw" data-era="sw" data-sel="autoApi" data-cycle="autoApi secureLink connect rnd" data-interval="4200">
+<svg role="img" aria-label="A phone, a watch and a key talk to a car: their messages become Auto API, pass through a secure link and go over Bluetooth to the car; beside the car, parking from a phone and approach detection" viewBox="0 0 300 300" width="300" height="300" fill="none" style="--pulse: 3.2s">
+<g class="grp" data-dim="rnd" stroke-linecap="round">
+<path d="M52 46C52 66 138 62 138 82M150 38V82M248 42C248 66 162 62 162 82" stroke="var(--line)" stroke-width="1.25"></path>
+<path class="pulse-tail" pathLength="100" d="M52 46C52 66 138 62 138 82" stroke="var(--accent)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84"></path>
+<path class="pulse-head" pathLength="100" d="M52 46C52 66 138 62 138 82" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 95"></path>
+<path class="pulse-tail" pathLength="100" d="M150 38V82" stroke="var(--accent)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84" style="animation-delay: -1.07s"></path>
+<path class="pulse-head" pathLength="100" d="M150 38V82" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 95" style="animation-delay: -1.07s"></path>
+<path class="pulse-tail" pathLength="100" d="M248 42C248 66 162 62 162 82" stroke="var(--accent)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84" style="animation-delay: -2.13s"></path>
+<path class="pulse-head" pathLength="100" d="M248 42C248 66 162 62 162 82" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 95" style="animation-delay: -2.13s"></path>
+</g>
+<g class="grp" data-dim="rnd" stroke-linecap="round">
+<path d="M150 112V142" stroke="var(--line)" stroke-width="1.25"></path>
+<path d="M150 168V202" stroke="var(--line)" stroke-width="1.25" stroke-dasharray="2 4"></path>
+<path class="pulse-tail" pathLength="100" d="M146 112V202" stroke="var(--accent)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84" style="animation-duration: 2.4s"></path>
+<path class="pulse-head" pathLength="100" d="M146 112V202" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 95" style="animation-duration: 2.4s"></path>
+<path class="pulse-tail" pathLength="100" d="M154 202V112" stroke="var(--back)" stroke-width="2" stroke-opacity=".3" stroke-dasharray="16 84" style="animation-duration: 2.4s; animation-delay: -1.2s"></path>
+<path class="pulse-head" pathLength="100" d="M154 202V112" stroke="var(--back)" stroke-width="2" stroke-dasharray="5 95" style="animation-duration: 2.4s; animation-delay: -1.2s"></path>
+</g>
+<g class="grp grp-sel" data-part="rnd" stroke-linecap="round">
+<path d="M165 219H190M165 245H190" stroke="var(--line)" stroke-width="1.25" stroke-dasharray="2 4"></path>
+</g>
+<g class="grp" data-dim="rnd" stroke-width="1.5" fill="var(--cbg)">
+<rect class="st" data-part="connect" x="42" y="8" width="20" height="38" rx="4.5"></rect>
+<circle class="st" data-part="connect" cx="52" cy="40.5" r="1.8" stroke-width="1"></circle>
+<path class="st" data-part="connect" d="M144 10v4M156 10v4M144 34v4M156 34v4" stroke-linecap="round"></path>
+<rect class="st" data-part="connect" x="140" y="14" width="20" height="20" rx="6"></rect>
+<rect class="st" data-part="connect" x="240" y="10" width="16" height="32" rx="8"></rect>
+<circle class="st" data-part="connect" cx="248" cy="20" r="3" stroke-width="1.1"></circle>
+</g>
+<rect class="glow on" data-part="autoApi" x="90" y="82" width="120" height="30" rx="10" stroke="var(--accent)" stroke-width="6" stroke-opacity=".18"></rect>
+<rect class="st fl on" data-part="autoApi" x="90" y="82" width="120" height="30" rx="10" stroke-width="1.5"></rect>
+<g class="st on" data-part="autoApi" stroke-width="1.1">
+<rect x="121" y="92" width="10" height="10" rx="2.2" fill="none"></rect>
+<rect class="fa on" data-part="autoApi" x="133" y="92" width="10" height="10" rx="2.2" fill-opacity=".45"></rect>
+<rect x="145" y="92" width="10" height="10" rx="2.2" fill="none"></rect>
+<rect class="fa on" data-part="autoApi" x="157" y="92" width="10" height="10" rx="2.2" fill-opacity=".45"></rect>
+<rect class="fa on" data-part="autoApi" x="169" y="92" width="10" height="10" rx="2.2" fill-opacity=".45"></rect>
+</g>
+<rect class="glow" data-part="secureLink" x="50" y="142" width="200" height="26" rx="13" stroke="var(--accent)" stroke-width="6" stroke-opacity=".18"></rect>
+<rect class="st fl" data-part="secureLink" x="50" y="142" width="200" height="26" rx="13" stroke-width="1.5" fill-opacity=".86"></rect>
+<g class="st" data-part="secureLink" stroke-width="1.3" stroke-linecap="round">
+<rect class="fl" data-part="secureLink" x="143.5" y="153" width="13" height="9.5" rx="2.2"></rect>
+<path d="M146.3 153v-2.6a3.7 3.7 0 0 1 7.4 0v2.6" fill="none"></path>
+</g>
+<rect class="glow" data-part="rnd" x="135" y="202" width="30" height="54" rx="9" stroke="var(--accent)" stroke-width="6" stroke-opacity=".18"></rect>
+<rect class="st fl" data-part="rnd" x="135" y="202" width="30" height="54" rx="9" stroke-width="1.5"></rect>
+<path class="st" data-part="rnd" d="M139 219Q150 214 161 219L159 227H141ZM141 242H159L161 249Q150 253 139 249Z" stroke-width="1.1" stroke-linejoin="round"></path>
+<g class="grp grp-sel" data-part="rnd">
+<rect class="st fl" data-part="rnd" x="190" y="207" width="24" height="24" rx="6.5" stroke-width="1.2"></rect>
+<text class="fa" data-part="rnd" x="202" y="223.5" text-anchor="middle" font-family="Schibsted Grotesk, sans-serif" font-size="12.5" font-weight="700">P</text>
+<rect class="st fl" data-part="rnd" x="190" y="233" width="24" height="24" rx="6.5" stroke-width="1.2"></rect>
+<circle class="fa" data-part="rnd" cx="207" cy="245" r="2.2"></circle>
+<path class="st" data-part="rnd" d="M201.5 241a6 6 0 0 0 0 8M198.3 238.5a10 10 0 0 0 0 13" stroke-width="1.1" stroke-linecap="round"></path>
+</g>
+</svg>
+<ul>
+<li><button type="button" data-id="autoApi" aria-pressed="true"><span class="item-name"><span class="mark" aria-hidden="true">.</span>autoApi</span><span class="item-note">The open car data protocol I designed.</span></button></li>
+<li><button type="button" data-id="secureLink" aria-pressed="false"><span class="item-name"><span class="mark" aria-hidden="true">.</span>secureLink</span><span class="item-note">Encrypted, signed Bluetooth, in as few bytes as possible.</span></button></li>
+<li><button type="button" data-id="connect" aria-pressed="false"><span class="item-name"><span class="mark" aria-hidden="true">.</span>connect</span><span class="item-note">SDKs letting phones and other devices talk to cars.</span></button></li>
+<li><button type="button" data-id="rnd" aria-pressed="false"><span class="item-name"><span class="mark" aria-hidden="true">.</span>prototypes</span><span class="item-note">Parking a car from a phone, and a car that senses which side you approach.</span></button></li>
+</ul>
+</figure>
 <div class="sub" id="swift-server">
 <h3>And on the server</h3>
 <p>A Swift backend I wrote over a Christmas break for my own startup, then a few smaller Swift services at work.</p>

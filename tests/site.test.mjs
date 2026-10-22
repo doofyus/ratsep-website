@@ -109,6 +109,19 @@ test('obj-c illustration', () => {
   });
 });
 
+test('swift illustration', () => {
+  checkIllustration(figure('sw', 0), {
+    label: 'A phone, a watch and a key talk to a car: their messages become Auto API, pass through a secure link and go over Bluetooth to the car; beside the car, parking from a phone and approach detection',
+    open: '.', close: '',
+    items: [
+      ['autoApi', 'autoApi', 'The open car data protocol I designed.'],
+      ['secureLink', 'secureLink', 'Encrypted, signed Bluetooth, in as few bytes as possible.'],
+      ['connect', 'connect', 'SDKs letting phones and other devices talk to cars.'],
+      ['rnd', 'prototypes', 'Parking a car from a phone, and a car that senses which side you approach.']
+    ]
+  });
+});
+
 test('fonts are local', () => {
   const style = css();
   const faces = style.match(/@font-face\s*{[^}]*}/g) ?? [];
