@@ -44,8 +44,9 @@ The page follows the system light/dark setting until someone presses the toggle;
 kept in `localStorage`. A small inline script in `<head>` sets `data-theme` before the first paint.
 
 The browser bar colour (`theme-color`) follows whichever band is at the top edge. iOS 26 Safari
-ignores it and tints its top bar from any fixed element at the top, so the mini header is fully
-hidden (`visibility: hidden`) when not shown, leaving Safari's own blur of the page. Without
+ignores it and tints its top bar from any fixed element at the top, so the mini header is opaque
+in the colour of the band under it, and leaves the layout (`hidden`) once it has faded out,
+leaving Safari's own blur of the page. Without
 JavaScript the page stays light and the toggle is hidden.
 
 ## Navigation
