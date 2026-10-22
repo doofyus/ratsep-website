@@ -5,6 +5,38 @@ import { readFileSync, existsSync } from 'node:fs';
 const html = () => readFileSync('index.html', 'utf8');
 const css = () => readFileSync('style.css', 'utf8');
 
+const tokens = (selector) => {
+  const block = css().match(new RegExp(`(?:^|\\n)${selector.replace(/[[\]]/g, '\\$&')}\\s*{([^}]*)}`));
+  assert.ok(block, `no ${selector} block`);
+  return Object.fromEntries([...block[1].matchAll(/(--[\w-]+):\s*(#[0-9a-fA-F]{6})/g)].map((m) => [m[1], m[2]]));
+};
+
+test('text tokens pass AA', async () => {
+  const { contrast } = await import('../lib.js');
+  const pairs = [
+    ['--ink', '--bg'], ['--body', '--bg'], ['--muted', '--bg'],
+    ['--oc-body', '--oc-band'], ['--oc-muted', '--oc-band'], ['--oc-note', '--oc-band'],
+    ['--sw-body', '--sw-band'], ['--sw-muted', '--sw-band'], ['--sw-note', '--sw-band'],
+    ['--ex-body', '--ex-band'], ['--ex-muted', '--ex-band'], ['--ex-note', '--ex-band']
+  ];
+  for (const selector of [':root', ':root[data-theme="dark"]']) {
+    const t = tokens(selector);
+    for (const [fg, bg] of pairs) {
+      assert.ok(t[fg] && t[bg], `${selector} lacks ${fg} or ${bg}`);
+      const ratio = contrast(t[fg], t[bg]);
+      assert.ok(ratio >= 4.5, `${selector} ${fg} on ${bg} is ${ratio.toFixed(2)}`);
+    }
+  }
+});
+
+test('sticky only on wide screens', () => {
+  const style = css();
+  const wide = style.match(/@media \(min-width: 861px\)\s*{([\s\S]*?)\n}/);
+  assert.ok(wide && /\.era-title\s*{[^}]*position:\s*sticky/.test(wide[1]));
+  const outside = style.replace(wide[0], '');
+  assert.ok(!/position:\s*sticky/.test(outside));
+});
+
 test('fonts are local', () => {
   const style = css();
   const faces = style.match(/@font-face\s*{[^}]*}/g) ?? [];
