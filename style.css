@@ -175,3 +175,13 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 .showcase .grp { transition: opacity .45s ease; }
 .showcase .grp.dim { opacity: .35; }
 .showcase .grp-sel:not(.on) { opacity: var(--off, .45); }
+
+.band-ex { --note: var(--ex-note); --note-on: #554B5B; --cbg: #ECE7F0; --line: #D5CCDB; --stroke: #B3A0BF; --fill: #F6F2F9; --hifill: #EEE7F3; --f1: #B0896A; --f2: #6F937B; --f3: #7F89B8; }
+:root[data-theme="dark"] .band-ex { --note-on: #ABA0B5; --cbg: #241D2B; --line: #463D52; --stroke: #5E5169; --fill: #2A2433; --hifill: #33293E; --f1: #C49B7C; --f2: #86AD92; --f3: #99A3D2; }
+.showcase-ex .eg { transition: opacity .45s ease; }
+.showcase-ex[data-sel="registration"] :is(.eg-mid, .eg-out, .eg-cache) { opacity: .3; }
+.showcase-ex[data-sel="ingest"] :is(.eg-out, .eg-cache) { opacity: .3; }
+.showcase-ex[data-sel="translate"] .eg-in { opacity: .3; }
+.showcase-ex[data-sel="translate"] .eg-cache { opacity: .6; }
+.showcase-ex[data-sel="cache"] :is(.eg-in, .eg-out) { opacity: .3; }
+.showcase-ex[data-sel="cache"] .eg-mid { opacity: .5; }

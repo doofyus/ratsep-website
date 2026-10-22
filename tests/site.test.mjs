@@ -134,6 +134,20 @@ test('swift server illustration', () => {
   });
 });
 
+test('elixir illustration', () => {
+  checkIllustration(figure('ex'), {
+    label: "Three carmakers' data passes registration, comes in through ingest and is translated into one shape; two customers get it from translate, a third from the cache",
+    open: ':', close: '',
+    items: [
+      ['all', 'services', 'For several carmakers, built and run in Elixir.'],
+      ['registration', 'registration', 'Each car cleared with its carmaker first.'],
+      ['ingest', 'ingest', 'Data polled, queued or pushed, all brought in.'],
+      ['translate', 'translate', 'Every format into one shared data model.'],
+      ['cache', 'cache', 'The newest value of everything, on request.']
+    ]
+  });
+});
+
 test('fonts are local', () => {
   const style = css();
   const faces = style.match(/@font-face\s*{[^}]*}/g) ?? [];
