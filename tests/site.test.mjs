@@ -271,3 +271,10 @@ test('highlight fades stroke and fill together', () => {
     assert.ok(!/transition/.test(rule[1]), `.${cls} overrides the shared transition`);
   }
 });
+
+test('list names use each drawing ink in dark', () => {
+  const style = css();
+  assert.ok(/\.showcase \.item-name {[^}]*color: var\(--item-ink, var\(--ink\)\)/.test(style));
+  assert.ok(/:root\[data-theme="dark"\] \.band-sw {[^}]*--item-ink: #EDE3DE/.test(style));
+  assert.ok(/:root\[data-theme="dark"\] \.band-ex {[^}]*--item-ink: #D9D1E2/.test(style));
+});
