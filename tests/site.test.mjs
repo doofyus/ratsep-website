@@ -180,6 +180,20 @@ test('footer links', () => {
     ['https://www.linkedin.com/in/mikkr', 'LinkedIn']]);
 });
 
+test('metadata', () => {
+  const page = html();
+  for (const tag of ['<meta property="og:title" content="Mikk Rätsep">', '<meta property="og:image" content="https://ratsep.org/og.png">',
+    '<meta property="og:url" content="https://ratsep.org/">', '<meta name="twitter:card" content="summary_large_image">']) {
+    assert.ok(page.includes(tag), tag);
+  }
+  assert.ok(/<meta property="og:description" content="[^"]+">/.test(page));
+  for (const [rel, file] of [['icon', 'favicon.svg'], ['icon', 'favicon.png'], ['apple-touch-icon', 'apple-touch-icon.png']]) {
+    assert.ok(page.includes(`rel="${rel}"`) && page.includes(`href="${file}"`), file);
+    assert.ok(existsSync(file), file);
+  }
+  assert.ok(existsSync('og.png'));
+});
+
 test('fonts are local', () => {
   const style = css();
   const faces = style.match(/@font-face\s*{[^}]*}/g) ?? [];
