@@ -124,12 +124,12 @@ test('swift illustration', () => {
 
 test('swift server illustration', () => {
   checkIllustration(figure('sw', 1), {
-    label: 'A Swift server in the middle: a car crossing a zone sends it an event that goes on to a customer; a bank feeds it account data; invoices arrive by email; a phone app and its database talk to it',
+    label: 'A Swift server in the middle: a car crossing a zone sends it an event that goes on to a customer; a bank feeds it account data; invoices arrive by email or from a camera; a phone app and its database talk to it',
     open: '.', close: '',
     items: [
       ['geofencing', 'geofencing', 'Zones for car fleets: cross a line, an event goes out.'],
       ['openBanking', 'openBanking', 'Every bank account in one place, through open banking.'],
-      ['invoices', 'invoices', 'Invoices forwarded by email, read and filed.'],
+      ['invoices', 'invoices', 'Invoices scanned with computer vision or forwarded by email.'],
       ['startups', 'startups', 'Backends for my other ideas and apps.']
     ]
   });
