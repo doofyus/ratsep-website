@@ -45,8 +45,7 @@ kept in `localStorage`. A small inline script in `<head>` sets `data-theme` befo
 
 The browser bar colour follows whichever band is at the top edge: `theme-color` for browsers that
 read it, and the hidden mini header's background for iOS 26 Safari, which tints its top bar from a
-fixed element instead. Without JavaScript the page stays
-light and the toggle is hidden.
+fixed element instead. Without JavaScript the page stays light and the toggle is hidden.
 
 ## Navigation
 
