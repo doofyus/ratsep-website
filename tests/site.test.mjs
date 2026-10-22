@@ -167,8 +167,8 @@ test('side projects', () => {
 test('about', () => {
   const about = html().match(/<section id="about"[\s\S]*?<\/section>/)[0];
   const flat = text(about);
-  for (const line of ['I like the part of a project where the shape of the data and the protocol gets decided.',
-    'Based in', 'Tallinn, after three years in Berlin',
+  assert.ok(!about.includes('class="lead"'), 'about has no lead sentence');
+  for (const line of ['Based in', 'Tallinn, after three years in Berlin',
     'Background', 'First program: a Breakout clone in QBasic, at school', 'Studied at the University of Tartu and TalTech, then left for work',
     'Community', 'Organised the Tallinn iOS meetup for several years and gave talks there on iOS and new technologies',
     'Talks', 'Co‑presented Nearest Neighbors, Distant Words at ElixirConf EU 2024',
