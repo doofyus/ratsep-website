@@ -194,6 +194,14 @@ test('metadata', () => {
   assert.ok(existsSync('og.png'));
 });
 
+test('obj-c content animations restart each time their screen is shown', () => {
+  const rules = [...css().matchAll(/([^{}]+){([^}]*animation:\s*oc-[^}]*)}/g)].map((m) => m[1].trim());
+  assert.ok(rules.length > 0);
+  for (const selector of rules) {
+    for (const part of selector.split(',')) assert.ok(part.trim().startsWith('.oc-content.on'), part.trim());
+  }
+});
+
 test('fonts are local', () => {
   const style = css();
   const faces = style.match(/@font-face\s*{[^}]*}/g) ?? [];

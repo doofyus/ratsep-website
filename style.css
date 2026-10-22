@@ -135,14 +135,20 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 .oc-content:not(.on) { display: none; }
 .oc-content.on { animation: oc-in .4s ease var(--in, .15s) both; }
 .showcase-oc.morph .oc-content.on { --in: .45s; }
-.oc-draw { stroke-dasharray: 120; stroke-dashoffset: 120; animation: oc-draw .5s ease-out var(--d) forwards; }
-.oc-appear { opacity: 0; animation: oc-in .4s ease var(--d) forwards; }
-.oc-pop { opacity: 0; animation: oc-pop .3s cubic-bezier(.2,.9,.3,1.2) var(--d) forwards; }
-.oc-pulse { transform-origin: 150px 140px; opacity: 0; animation: oc-pulse .9s ease-out 1.6s forwards; }
-.oc-ring { animation: oc-ring 1.2s ease .6s forwards; }
-.oc-unlock { animation: oc-unlock 1.2s cubic-bezier(.3,.7,.2,1) .6s forwards; }
-.oc-light { fill-opacity: 0; animation: oc-light .3s ease var(--d) forwards; }
-.oc-grow { transform-origin: 112px 240px; transform: scaleX(0); animation: oc-grow 1s ease-out 2.9s forwards; }
+.oc-draw { stroke-dasharray: 120; stroke-dashoffset: 120; }
+.oc-content.on .oc-draw { animation: oc-draw .5s ease-out var(--d) forwards; }
+.oc-appear { opacity: 0; }
+.oc-content.on .oc-appear { animation: oc-in .4s ease var(--d) forwards; }
+.oc-pop { opacity: 0; }
+.oc-content.on .oc-pop { animation: oc-pop .3s cubic-bezier(.2,.9,.3,1.2) var(--d) forwards; }
+.oc-pulse { transform-origin: 150px 140px; opacity: 0; }
+.oc-content.on .oc-pulse { animation: oc-pulse .9s ease-out 1.6s forwards; }
+.oc-content.on .oc-ring { animation: oc-ring 1.2s ease .6s forwards; }
+.oc-content.on .oc-unlock { animation: oc-unlock 1.2s cubic-bezier(.3,.7,.2,1) .6s forwards; }
+.oc-light { fill-opacity: 0; }
+.oc-content.on .oc-light { animation: oc-light .3s ease var(--d) forwards; }
+.oc-grow { transform-origin: 112px 240px; transform: scaleX(0); }
+.oc-content.on .oc-grow { animation: oc-grow 1s ease-out 2.9s forwards; }
 @keyframes oc-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes oc-draw { from { stroke-dashoffset: 120; } to { stroke-dashoffset: 0; } }
 @keyframes oc-pop { from { opacity: 0; transform: scale(.7); } to { opacity: 1; transform: none; } }
