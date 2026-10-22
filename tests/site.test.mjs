@@ -72,8 +72,41 @@ test('era bands', () => {
     assert.ok(flat.includes(s), s);
   }
   assert.ok(eras[1].includes('<a href="https://github.com/highmobility/auto-api">Auto API</a>'));
-  const figures = [...eras[1].matchAll(/<figure class="showcase" data-era="(\w+)"/g)].map((m) => m[1]);
+  const figures = [...eras[1].matchAll(/<figure class="showcase[^"]*" data-era="(\w+)"/g)].map((m) => m[1]);
   assert.deepEqual(figures, ['oc', 'sw', 'sw', 'ex']);
+});
+
+const figure = (era, index = 0) => {
+  const all = [...html().matchAll(new RegExp(`<figure class="showcase[^"]*" data-era="${era}"[\\s\\S]*?</figure>`, 'g'))];
+  assert.ok(all[index], `no ${era} figure ${index}`);
+  return all[index][0];
+};
+
+const checkIllustration = (fig, { label, items, open, close }) => {
+  assert.ok(new RegExp(`<svg role="img" aria-label="${label.replace(/[.?*+()[\]]/g, '\\$&')}"`).test(fig), 'svg label');
+  const sel = fig.match(/data-sel="(\w+)"/)[1];
+  assert.equal(sel, items[0][0]);
+  const flat = text(fig);
+  for (const [id, name, note] of items) {
+    assert.ok(fig.includes(`data-id="${id}"`), id);
+    assert.ok(flat.includes(`${open}${name}${close}`), name);
+    assert.ok(flat.includes(note), note);
+  }
+  const parts = [...fig.matchAll(/data-part="([^"]+)"/g)].flatMap((m) => m[1].split(' '));
+  for (const id of fig.match(/data-cycle="([^"]+)"/)[1].split(' ')) assert.ok(parts.includes(id), `no part for ${id}`);
+};
+
+test('obj-c illustration', () => {
+  checkIllustration(figure('oc'), {
+    label: 'A Mac window with a payroll table',
+    open: '[', close: ']',
+    items: [
+      ['mac', 'Payroll', 'A Mac app for the Swedish market. My first real product.'],
+      ['tv', 'Social TV', 'Watch live TV and talk about it as it airs.'],
+      ['car', 'Carmaker apps', 'iOS apps for several European carmakers.'],
+      ['more', 'And more', 'About a dozen other, smaller projects.']
+    ]
+  });
 });
 
 test('fonts are local', () => {

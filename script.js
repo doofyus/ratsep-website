@@ -27,6 +27,8 @@ function initShowcase(figure) {
     for (const el of figure.querySelectorAll('[data-part]')) el.classList.toggle('on', el.dataset.part.split(' ').includes(id));
     for (const el of figure.querySelectorAll('[data-dim]')) el.classList.toggle('dim', el.dataset.dim.split(' ').includes(id));
     for (const b of buttons) b.setAttribute('aria-pressed', String(b.dataset.id === id));
+    const label = buttons.find((b) => b.dataset.id === id)?.dataset.label;
+    if (label) figure.querySelector('svg')?.setAttribute('aria-label', label);
   };
 
   const select = (id) => {
@@ -44,7 +46,13 @@ function initShowcase(figure) {
     timer = setTimeout(() => { select(nextId(cycle, figure.dataset.sel)); schedule(); }, interval);
   };
 
-  for (const b of buttons) b.addEventListener('click', () => { select(b.dataset.id); schedule(); });
+  for (const b of buttons) {
+    b.addEventListener('click', () => { select(b.dataset.id); schedule(); });
+    if ('hoverSelect' in figure.dataset) {
+      b.addEventListener('pointerenter', () => select(b.dataset.id));
+      b.addEventListener('focus', () => select(b.dataset.id));
+    }
+  }
   figure.addEventListener('pointerenter', () => { state.hovered = true; schedule(); });
   figure.addEventListener('pointerleave', () => { state.hovered = false; schedule(); });
   figure.addEventListener('focusin', () => { state.focused = true; schedule(); });
