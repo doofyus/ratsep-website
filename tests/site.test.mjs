@@ -56,6 +56,26 @@ test('hero visible without js', () => {
   }
 });
 
+test('era bands', () => {
+  const page = html();
+  const eras = page.match(/<div id="eras">([\s\S]*?)<!-- \/eras -->/);
+  assert.ok(eras, 'no #eras');
+  const ids = [...eras[1].matchAll(/<section[^>]*id="(\w+)"/g)].map((m) => m[1]);
+  assert.deepEqual(ids, ['objc', 'swift', 'elixir']);
+  const flat = text(eras[1]);
+  for (const s of ['2011 – 2016', '2014 – 2024', '2022 – today', 'From the Mac to iOS', 'Every byte counts',
+    'And on the server', 'Many carmakers, one format',
+    'My first real product was a Mac payroll app for the Swedish market. A year later I moved to iOS and built apps for clients, several carmakers among them.',
+    'For our own hardware, I designed how phones talk to it: an encrypted Bluetooth protocol, a binary format that became the open Auto API, and the security around them.',
+    'A Swift backend I wrote over a Christmas break for my own startup, then a few smaller Swift services at work.',
+    'The data never stops, and no two carmakers send it the same way. I build and run a part of the pipeline: the Elixir services that bring it all in and keep it flowing, even when one side misbehaves.']) {
+    assert.ok(flat.includes(s), s);
+  }
+  assert.ok(eras[1].includes('<a href="https://github.com/highmobility/auto-api">Auto API</a>'));
+  const figures = [...eras[1].matchAll(/<figure class="showcase" data-era="(\w+)"/g)].map((m) => m[1]);
+  assert.deepEqual(figures, ['oc', 'sw', 'sw', 'ex']);
+});
+
 test('fonts are local', () => {
   const style = css();
   const faces = style.match(/@font-face\s*{[^}]*}/g) ?? [];

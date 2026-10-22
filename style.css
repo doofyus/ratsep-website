@@ -80,3 +80,21 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 @media (prefers-reduced-motion: reduce) {
   .lang .ha { transition: none !important; transform: none !important; }
 }
+
+.band { padding: 112px 0; }
+.band-oc { background: var(--oc-band); --accent: var(--oc-accent); --soft: var(--oc-soft); --era-body: var(--oc-body); --era-muted: var(--oc-muted); }
+.band-sw { background: var(--sw-band); --accent: var(--sw-accent); --soft: var(--sw-soft); --era-body: var(--sw-body); --era-muted: var(--sw-muted); }
+.band-ex { background: var(--ex-band); --accent: var(--ex-accent); --soft: var(--ex-soft); --era-body: var(--ex-body); --era-muted: var(--ex-muted); }
+.era-name { font-size: clamp(44px, 6.4vw, 88px); line-height: 1; color: var(--accent); }
+.band-oc .era-name { font-family: var(--mono); letter-spacing: -0.02em; }
+.band-sw .era-name { font-weight: 700; letter-spacing: -0.03em; }
+.band-ex .era-name { font-weight: 500; letter-spacing: -0.02em; }
+.era-name .soft { color: var(--soft); }
+.band-ex .era-name .soft { font-family: var(--mono); }
+.years { margin-top: 16px; font-size: 15px; color: var(--era-muted); }
+.band h2 { margin: 0 0 14px; font-size: 28px; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em; }
+.band h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.3; font-weight: 600; }
+.band .right > p { margin: 0 0 40px; color: var(--era-body); }
+.band .sub { margin-top: 72px; }
+.band .sub > p { margin: 0 0 32px; color: var(--era-body); }
+.showcase { margin: 0; }
