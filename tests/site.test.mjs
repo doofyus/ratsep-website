@@ -156,7 +156,7 @@ test('side projects', () => {
   const flat = text(side);
   for (const line of ['A bowling score log for iPhone.',
     'Plan a LAN party in real time: game votes, Steam libraries and who brings what.',
-    'A privacy tool, then invoices by email. I led a couple of developers and wrote the backend and the iOS app.',
+    'A privacy tool, then an app that keeps your invoices in order. I led a couple of developers and wrote the backend and the iOS app.',
     'All your bank accounts in one iOS app, with its own Swift backend.',
     'An iOS app for nature sound observations, made for the University of Tartu’s natural history museum.',
     'Dashboards, automations, smart switches and the rest of the smart home.']) assert.ok(flat.includes(line), line);
@@ -172,7 +172,7 @@ test('about', () => {
     'Background', 'First program: a Breakout clone in QBasic, at school', 'Studied at the University of Tartu and TalTech, then left for work',
     'Community', 'Organised the Tallinn iOS meetup for several years and gave talks there on iOS and new technologies',
     'Talks', 'Co‑presented Nearest Neighbors, Distant Words at ElixirConf EU 2024',
-    'Off the keyboard', 'Riding motorcycles']) assert.ok(flat.includes(line), line);
+    'Off the keyboard', 'Riding motorcycles', 'Hanging out with Präänik, the cat']) assert.ok(flat.includes(line), line);
   assert.ok(about.includes('<a href="https://www.youtube.com/watch?v=8lTbtDwBN40">Nearest Neighbors, Distant Words</a>'));
 });
 
