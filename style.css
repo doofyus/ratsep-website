@@ -64,7 +64,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 .lang-sw .dot { font-family: var(--mono); font-weight: 500; color: var(--sw-soft); }
 .band-sw .era-name .soft { font-family: var(--mono); font-weight: 500; }
 .lang-ex { color: var(--ex-accent); }
-.lang-ex .pipe { font-family: var(--mono); color: var(--ex-soft); }
+.lang-ex .pipe { margin-right: .16em; font-family: var(--mono); color: var(--ex-soft); }
 
 .lang-oc .b-l, .lang-oc .b-r { transition: opacity .45s cubic-bezier(.2,.9,.2,1) .5s, transform .45s cubic-bezier(.2,.9,.2,1) .5s; }
 .lang-oc .name { transition: opacity .4s ease-out .35s; }
@@ -94,7 +94,7 @@ html.js .hero:not(.in) .lang-ex .push { transform: translateX(-0.35em); }
 .band-sw .era-name { font-weight: 700; letter-spacing: -0.03em; }
 .band-ex .era-name { font-weight: 500; letter-spacing: -0.02em; }
 .era-name .soft { color: var(--soft); }
-.band-ex .era-name .soft { font-family: var(--mono); }
+.band-ex .era-name .soft { margin-right: .16em; font-family: var(--mono); }
 .years { margin-top: 16px; font-size: 15px; color: var(--era-muted); }
 .band h2 { margin: 0 0 14px; font-size: 28px; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em; }
 .band h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.3; font-weight: 600; }
